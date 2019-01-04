@@ -1,7 +1,7 @@
-## DSFD: Dual Shot Face Detector##
+## DSFD: Dual Shot Face Detector
 Our DSFD face detector achieves state-of-the-art performance on [WIDER FACE](http://mmlab.ie.cuhk.edu.hk/projects/WIDERFace/WiderFace_Results.html) and [FDDB](http://vis-www.cs.umass.edu/fddb/results.html) benchmark.
 
-Our paper is published in arxiv: [DSFD: Dual Shot Face Detector](https://arxiv.org/abs/1810.10220).
+Our paper is published in arXiv: [DSFD: Dual Shot Face Detector](https://arxiv.org/abs/1810.10220).
 
 Code will be made available upon publication.
 
