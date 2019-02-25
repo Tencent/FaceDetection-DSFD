@@ -1,9 +1,11 @@
 ## DSFD: Dual Shot Face Detector
+Our paper [DSFD: Dual Shot Face Detector](https://arxiv.org/abs/1810.10220) has been accepted by CVPR2019!
+
+Code will be made available soon.
+
 Our DSFD face detector achieves state-of-the-art performance on [WIDER FACE](http://mmlab.ie.cuhk.edu.hk/projects/WIDERFace/WiderFace_Results.html) and [FDDB](http://vis-www.cs.umass.edu/fddb/results.html) benchmark.
 
-Our paper is published in arXiv: [DSFD: Dual Shot Face Detector](https://arxiv.org/abs/1810.10220).
 
-Code will be made available upon publication.
 
 Please cite DSFD in your publications if it helps your research:
 
