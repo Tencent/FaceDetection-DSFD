@@ -8,22 +8,27 @@ By [Jian Li](https://lijiannuist.github.io/)
 We propose a novel face detection network, named DSFD, with superior performance on accuracy. You can use the code to evaluate the DSFD method for face detection. For more details, please refer to our paper [DSFD: Dual Shot Face Detector](https://arxiv.org/abs/1810.10220)!
 
 <p align="left">
-<img src="https://github.com/TencentYoutuResearch/FaceDetection-DSFD/blob/master/imgs/Network.pdf" alt="FaceBoxes Framework" width="777px">
+<img src="https://github.com/TencentYoutuResearch/FaceDetection-DSFD/blob/master/imgs/DSFD_framework.PNG" alt="DSFD Framework" width="777px">
 </p>
 
 Our DSFD face detector achieves state-of-the-art performance on [WIDER FACE](http://mmlab.ie.cuhk.edu.hk/projects/WIDERFace/WiderFace_Results.html) and [FDDB](http://vis-www.cs.umass.edu/fddb/results.html) benchmark.
 
 <p align="left">
-<img src="https://github.com/TencentYoutuResearch/FaceDetection-DSFD/blob/master/imgs/DSFD_widerface.PNG" alt="FaceBoxes Framework" width="777px">
+<img src="https://github.com/TencentYoutuResearch/FaceDetection-DSFD/blob/master/imgs/DSFD_widerface.PNG" alt="DSFD Widerface Performance" width="777px">
 </p>
 
 <p align="left">
-<img src="https://github.com/TencentYoutuResearch/FaceDetection-DSFD/blob/master/imgs/DSFD_fddb.PNG" alt="FaceBoxes Performance" width="770px">
+<img src="https://github.com/TencentYoutuResearch/FaceDetection-DSFD/blob/master/imgs/DSFD_fddb.PNG" alt="DSFD FDDB Performance" width="770px">
 </p>
 
 ### Demo
 <p align='center'>
-  <img src='https://github.com/TencentYoutuResearch/FaceDetection-DSFD/blob/master/imgs/DSFD_demo.PNG' width='1280'/>
+  <img src='https://github.com/TencentYoutuResearch/FaceDetection-DSFD/blob/master/imgs/DSFD_demo1.PNG' width='1280'/>
+</p>
+
+### Demo
+<p align='center'>
+  <img src='https://github.com/TencentYoutuResearch/FaceDetection-DSFD/blob/master/imgs/DSFD_demo2.PNG' width='1280'/>
 </p>
 
 ## Prerequisites
