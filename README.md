@@ -30,11 +30,12 @@ Our DSFD face detector achieves state-of-the-art performance on [WIDER FACE](htt
   <img src='https://github.com/TencentYoutuResearch/FaceDetection-DSFD/blob/master/imgs/DSFD_demo2.PNG' width='1280'/>
 </p>
 
-## Prerequisites
+## Requirements
 - Torch == 0.3.1
-- Linux
-- NVIDIA GPU = Tesla P40 
-- CUDA CuDNN 
+- Torchvision == 0.2.1
+- Python == 3.6
+- NVIDIA GPU == Tesla P40 
+- Linux CUDA CuDNN
 
 ## Getting Started
 
@@ -52,11 +53,14 @@ cd FaceDetection-DSFD
 2. Download our [DSFD model](https://drive.google.com/open?id=1eyqFViMoBlN8JokGRHxbnJ8D4o0pTWac) trained on WIDER FACE training set to `$DSFD_ROOT/weights/`.
 
 
-3. Check out [`test/demo.py`](https://github.com/TencentYoutuResearch/FaceDetection-DSFD/blob/master/test/demo.py) on how to detect faces using the DSFD model and how to plot detection results.
+3. Check out [`tools/demo.py`](https://github.com/TencentYoutuResearch/FaceDetection-DSFD/blob/master/test/demo.py) on how to detect faces using the DSFD model and how to plot detection results.
 
-4. Evaluate the trained model via [`test/widerface_test.py`](https://github.com/TencentYoutuResearch/FaceDetection-DSFD/blob/master/test/widerface_test.py) on WIDER FACE.
+4. Evaluate the trained model via [`./widerface_test.py`](https://github.com/TencentYoutuResearch/FaceDetection-DSFD/blob/master/test/widerface_test.py) on WIDER FACE.
+usage: 
+export CUDA_VISIBLE_DEVICES=0
+python widerface_test.py [--trained_model [MODEL_PATH]] [--save_folder [RESULTS_PATH]] [--widerface_root [WIDERFACE_DATADET_PATH]]
 
-5. Evaluate the trained model via [`test/fddb_test.py`](https://github.com/sTencentYoutuResearch/FaceDetection-DSFD/blob/master/test/fddb_test.py) on FDDB.
+5. Evaluate the trained model via [`./fddb_test.py`](https://github.com/sTencentYoutuResearch/FaceDetection-DSFD/blob/master/test/fddb_test.py) on FDDB.
 
 6. Download the [eval_tool](http://mmlab.ie.cuhk.edu.hk/projects/WIDERFace/support/eval_script/eval_tools.zip) to show the WIDERFACE performance.
 
