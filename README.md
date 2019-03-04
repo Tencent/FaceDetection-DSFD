@@ -2,7 +2,7 @@
 
 [![License](https://img.shields.io/badge/license-BSD-blue.svg)](LICENSE)
 
-By [Jian Li](https://lijiannuist.github.io/)
+By [Jian Li](https://lijiannuist.github.io/), Yabiao Wang, Changan Wang, Ying Tai 
 
 ### Introduction
 We propose a novel face detection network, named DSFD, with superior performance on accuracy. You can use the code to evaluate the DSFD method for face detection. For more details, please refer to our paper [DSFD: Dual Shot Face Detector](https://arxiv.org/abs/1810.10220)!
