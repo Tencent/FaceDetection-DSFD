@@ -26,7 +26,6 @@ Our DSFD face detector achieves state-of-the-art performance on [WIDER FACE](htt
   <img src='https://github.com/TencentYoutuResearch/FaceDetection-DSFD/blob/master/imgs/DSFD_demo1.PNG' width='1280'/>
 </p>
 
-### Demo
 <p align='center'>
   <img src='https://github.com/TencentYoutuResearch/FaceDetection-DSFD/blob/master/imgs/DSFD_demo2.PNG' width='1280'/>
 </p>
@@ -42,7 +41,7 @@ Our DSFD face detector achieves state-of-the-art performance on [WIDER FACE](htt
 ### Installation
 Clone the github repository. We will call the cloned directory as `$DSFD_ROOT`.
 ```bash
-git  clone https://github.com/TencentYoutuResearch/FaceDetection-DSFD.git
+git clone https://github.com/TencentYoutuResearch/FaceDetection-DSFD.git
 cd FaceDetection-DSFD
 ```
 
