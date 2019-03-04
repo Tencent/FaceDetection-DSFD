@@ -4,7 +4,7 @@
 
 By [Jian Li](https://lijiannuist.github.io/), Yabiao Wang, Changan Wang, Ying Tai 
 
-### Introduction
+## Introduction
 We propose a novel face detection network, named DSFD, with superior performance on accuracy. You can use the code to evaluate the DSFD method for face detection. For more details, please refer to our paper [DSFD: Dual Shot Face Detector](https://arxiv.org/abs/1810.10220)!
 
 <p align="left">
@@ -13,15 +13,17 @@ We propose a novel face detection network, named DSFD, with superior performance
 
 Our DSFD face detector achieves state-of-the-art performance on [WIDER FACE](http://mmlab.ie.cuhk.edu.hk/projects/WIDERFace/WiderFace_Results.html) and [FDDB](http://vis-www.cs.umass.edu/fddb/results.html) benchmark.
 
+### WIDER FACE
 <p align="left">
 <img src="https://github.com/TencentYoutuResearch/FaceDetection-DSFD/blob/master/imgs/DSFD_widerface.PNG" alt="DSFD Widerface Performance" width="777px">
 </p>
 
+### FDDB
 <p align="left">
 <img src="https://github.com/TencentYoutuResearch/FaceDetection-DSFD/blob/master/imgs/DSFD_fddb.PNG" alt="DSFD FDDB Performance" width="777px">
 </p>
 
-### Demo
+## Demo
 <p align='center'>
   <img src='https://github.com/TencentYoutuResearch/FaceDetection-DSFD/blob/master/imgs/DSFD_demo3.PNG' width='1280'/>
 </p>
