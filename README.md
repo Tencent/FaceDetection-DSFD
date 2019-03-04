@@ -23,11 +23,11 @@ Our DSFD face detector achieves state-of-the-art performance on [WIDER FACE](htt
 
 ### Demo
 <p align='center'>
-  <img src='https://github.com/TencentYoutuResearch/FaceDetection-DSFD/blob/master/imgs/DSFD_demo1.PNG' width='1280'/>
+  <img src='https://github.com/TencentYoutuResearch/FaceDetection-DSFD/blob/master/imgs/DSFD_demo3.PNG' width='1280'/>
 </p>
 
 <p align='center'>
-  <img src='https://github.com/TencentYoutuResearch/FaceDetection-DSFD/blob/master/imgs/DSFD_demo2.PNG' width='1280'/>
+  <img src='https://github.com/TencentYoutuResearch/FaceDetection-DSFD/blob/master/imgs/DSFD_demo3.PNG' width='1280'/>
 </p>
 
 ## Requirements
@@ -63,7 +63,6 @@ python widerface_test.py [--trained_model [TRAINED_MODEL]] [--save_folder [SAVE_
     --trained_model      Path to the saved model
     --save_folder        Path of output widerface resutls
     --widerface_root     Path of widerface dataset
-
 ```
 
 5. Evaluate the trained model via [`./fddb_test.py`](https://github.com/sTencentYoutuResearch/FaceDetection-DSFD/blob/master/test/fddb_test.py) on FDDB.
