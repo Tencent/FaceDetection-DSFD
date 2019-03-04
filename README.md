@@ -18,7 +18,7 @@ Our DSFD face detector achieves state-of-the-art performance on [WIDER FACE](htt
 </p>
 
 <p align="left">
-<img src="https://github.com/TencentYoutuResearch/FaceDetection-DSFD/blob/master/imgs/DSFD_fddb.PNG" alt="DSFD FDDB Performance" width="770px">
+<img src="https://github.com/TencentYoutuResearch/FaceDetection-DSFD/blob/master/imgs/DSFD_fddb.PNG" alt="DSFD FDDB Performance" width="777px">
 </p>
 
 ### Demo
@@ -38,17 +38,31 @@ Our DSFD face detector achieves state-of-the-art performance on [WIDER FACE](htt
 - CUDA CuDNN 
 
 ## Getting Started
+
 ### Installation
-
-Clone the github repository:
-
+Clone the github repository. We will call the cloned directory as `$DSFD_ROOT`.
 ```bash
 git  clone https://github.com/TencentYoutuResearch/FaceDetection-DSFD.git
 cd FaceDetection-DSFD
 ```
 
-### Citing DSFD
 
+### Evaluation
+1. Download the images of [WIDER FACE](http://mmlab.ie.cuhk.edu.hk/projects/WIDERFace/) and [FDDB](https://drive.google.com/open?id=17t4WULUDgZgiSy5kpCax4aooyPaz3GQH) to `$DSFD_ROOT/data/`.
+
+2. Download our [DSFD model](https://drive.google.com/open?id=1eyqFViMoBlN8JokGRHxbnJ8D4o0pTWac) trained on WIDER FACE training set to `$DSFD_ROOT/weights/`.
+
+
+3. Check out [`test/demo.py`](https://github.com/TencentYoutuResearch/FaceDetection-DSFD/blob/master/test/demo.py) on how to detect faces using the DSFD model and how to plot detection results.
+
+4. Evaluate the trained model via [`test/widerface_test.py`](https://github.com/TencentYoutuResearch/FaceDetection-DSFD/blob/master/test/widerface_test.py) on WIDER FACE.
+
+5. Evaluate the trained model via [`test/fddb_test.py`](https://github.com/sTencentYoutuResearch/FaceDetection-DSFD/blob/master/test/fddb_test.py) on FDDB.
+
+6. Download the [eval_tool](http://mmlab.ie.cuhk.edu.hk/projects/WIDERFace/support/eval_script/eval_tools.zip) to show the WIDERFACE performance.
+
+
+### Citing DSFD
 Please cite DSFD in your publications if it helps your research:
 
 	@article{li2018dsfd,
