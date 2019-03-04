@@ -1,11 +1,46 @@
 ## DSFD: Dual Shot Face Detector
-Our paper [DSFD: Dual Shot Face Detector](https://arxiv.org/abs/1810.10220) has been accepted by CVPR2019!
 
-Code will be made available soon.
+[![License](https://img.shields.io/badge/license-BSD-blue.svg)](LICENSE)
+
+By [Jian Li](https://lijiannuist.github.io/)
+
+### Introduction
+We propose a novel face detection network, named DSFD, with superior performance on accuracy. You can use the code to evaluate the DSFD method for face detection. For more details, please refer to our paper [DSFD: Dual Shot Face Detector](https://arxiv.org/abs/1810.10220)!
+
+<p align="left">
+<img src="https://github.com/sfzhang15/FaceBoxes/blob/master/faceboxes_framework.jpg" alt="FaceBoxes Framework" width="777px">
+</p>
 
 Our DSFD face detector achieves state-of-the-art performance on [WIDER FACE](http://mmlab.ie.cuhk.edu.hk/projects/WIDERFace/WiderFace_Results.html) and [FDDB](http://vis-www.cs.umass.edu/fddb/results.html) benchmark.
 
+<p align="left">
+<img src="https://github.com/sfzhang15/FaceBoxes/blob/master/faceboxes_framework.jpg" alt="FaceBoxes Framework" width="777px">
+</p>
 
+<p align="left">
+<img src="https://github.com/sfzhang15/FaceBoxes/blob/master/faceboxes_performance.jpg" alt="FaceBoxes Performance" width="770px">
+</p>
+
+### Demo
+<p align='center'>
+  <img src='imgs/demo.png' width='1280'/>
+</p>
+
+## Prerequisites
+- Torch == 0.3.1
+- Linux
+- NVIDIA GPU = Tesla P40 
+- CUDA CuDNN 
+
+## Getting Started
+### Setup
+
+Clone the github repository:
+
+```bash
+git  clone https://github.com/TencentYoutuResearch/FaceDetection-DSFD.git
+cd FaceDetection-DSFD
+```
 
 Please cite DSFD in your publications if it helps your research:
 
