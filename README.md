@@ -26,10 +26,6 @@ Our DSFD face detector achieves state-of-the-art performance on [WIDER FACE](htt
   <img src='https://github.com/TencentYoutuResearch/FaceDetection-DSFD/blob/master/imgs/DSFD_demo3.PNG' width='1280'/>
 </p>
 
-<p align='center'>
-  <img src='https://github.com/TencentYoutuResearch/FaceDetection-DSFD/blob/master/imgs/DSFD_demo3.PNG' width='1280'/>
-</p>
-
 ## Requirements
 - Torch == 0.3.1
 - Torchvision == 0.2.1
