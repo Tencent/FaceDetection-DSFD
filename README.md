@@ -38,7 +38,7 @@ Our DSFD face detector achieves state-of-the-art performance on [WIDER FACE](htt
 - CUDA CuDNN 
 
 ## Getting Started
-### Setup
+### Installation
 
 Clone the github repository:
 
@@ -46,6 +46,8 @@ Clone the github repository:
 git  clone https://github.com/TencentYoutuResearch/FaceDetection-DSFD.git
 cd FaceDetection-DSFD
 ```
+
+### Citing DSFD
 
 Please cite DSFD in your publications if it helps your research:
 
