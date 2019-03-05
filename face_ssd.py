@@ -15,18 +15,18 @@ cfg = widerface_640
 
 mo = cfg['max_out']
 fpn = cfg['feature_pyramid_network']
-cpm = cfg['context_predict_module']
+fem = cfg['feature_enhance_module']
 mio = cfg['max_in_out']
-pa = cfg['pyramid_anchor']
+pa = cfg['progressive_anchor']
 backbone = cfg['backbone']
 bup = cfg['bottom_up_path']
 refine = cfg['refinedet']
 
 assert(not mo or not mio)
 
-class CPM(nn.Module):
+class FEM(nn.Module):
     def __init__(self, channel_size):
-        super(CPM , self).__init__()
+        super(FEM , self).__init__()
         self.cs = channel_size
         self.cpm1 = nn.Conv2d( self.cs, 256, kernel_size=3, dilation=1, stride=1, padding=1)
         self.cpm2 = nn.Conv2d( self.cs, 256, kernel_size=3, dilation=2, stride=1, padding=2)
@@ -155,15 +155,15 @@ class SSD(nn.Module):
             self.bup3 = nn.Conv2d(bup_in[2], bup_in[3], kernel_size=3, stride=2, padding=1)
             self.bup4 = nn.Conv2d(bup_in[3], bup_in[4], kernel_size=3, stride=2, padding=1)
             self.bup5 = nn.Conv2d(bup_in[4], bup_in[5], kernel_size=3, stride=2, padding=1)
-        if cpm:
+        if fem:
             cpm_in = output_channels
             #self.cpm3_3 = nn.Conv2d(cpm_in[0], 512, kernel_size=1)
-            self.cpm3_3 = CPM(cpm_in[0])
-            self.cpm4_3 = CPM(cpm_in[1])
-            self.cpm5_3 = CPM(cpm_in[2])
-            self.cpm7 = CPM(cpm_in[3])
-            self.cpm6_2 = CPM(cpm_in[4])
-            self.cpm7_2 = CPM(cpm_in[5])
+            self.cpm3_3 = FEM(cpm_in[0])
+            self.cpm4_3 = FEM(cpm_in[1])
+            self.cpm5_3 = FEM(cpm_in[2])
+            self.cpm7 = FEM(cpm_in[3])
+            self.cpm6_2 = FEM(cpm_in[4])
+            self.cpm7_2 = FEM(cpm_in[5])
             #self.cpm_layer = nn.Sequential( *[self.cpm3_3, self.cpm4_3, self.cpm5_3, self.cpm7, self.cpm6_2, self.cpm7_2] )
             
         if pa:
@@ -279,7 +279,7 @@ class SSD(nn.Module):
             conv7_2_x = F.relu( self.bup5(conv6_2_x)) * conv7_2_x 
         
         sources = [conv3_3_x, conv4_3_x, conv5_3_x, fc7_x, conv6_2_x, conv7_2_x]
-        if cpm:
+        if fem:
            sources[0] = self.cpm3_3(sources[0])
            sources[1] = self.cpm4_3(sources[1])
            sources[2] = self.cpm5_3(sources[2])
@@ -461,7 +461,7 @@ def multibox(output_channels, mbox_cfg, num_classes):
     loc_layers = []
     conf_layers = []
     for k, v in enumerate(output_channels):
-        input_channels = (512 if cpm else v)
+        input_channels = (512 if fem else v)
         loc_layers += [nn.Conv2d(input_channels, mbox_cfg[k] * 4, kernel_size=3, padding=1)]
         if mo:
             if k==0:
@@ -502,7 +502,7 @@ def pa_multibox(output_channels, mbox_cfg, num_classes):
     loc_layers = []
     conf_layers = []
     for k, v in enumerate(output_channels):
-        input_channels = (512 if cpm else v)
+        input_channels = (512 if fem else v)
         if k ==0:
             loc_output = 4
             conf_output = 2

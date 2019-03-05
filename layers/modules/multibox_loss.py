@@ -9,7 +9,7 @@ import pdb
 
 from data import  widerface_640
 cfg = widerface_640
-pa = cfg['pyramid_anchor']
+pa = cfg['progressive_anchor']
 ac = cfg['anchor_compensation']
 refine = cfg['refinedet']
 class MultiBoxLoss(nn.Module):

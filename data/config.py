@@ -88,11 +88,10 @@ widerface_640 = {
     'backbone': 'resnet152' , # vgg, resnet, detnet, resnet50
     'feature_pyramid_network':True ,
     'bottom_up_path': False ,
-    'context_predict_module': True ,
+    'feature_enhance_module': True ,
     'max_in_out': True , 
     'focal_loss': False ,
-    'pyramid_anchor': True ,
-
+    'progressive_anchor': True ,
     'refinedet': False ,   
     'max_out': False , 
     'anchor_compensation': False , 
