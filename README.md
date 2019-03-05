@@ -56,12 +56,12 @@ cd FaceDetection-DSFD
 ### Evaluation
 1. Download the images of [WIDER FACE](http://mmlab.ie.cuhk.edu.hk/projects/WIDERFace/) and [FDDB](https://drive.google.com/open?id=17t4WULUDgZgiSy5kpCax4aooyPaz3GQH) to `$DSFD_ROOT/data/`.
 
-2. Download our [DSFD model](https://drive.google.com/open?id=1eyqFViMoBlN8JokGRHxbnJ8D4o0pTWac) trained on WIDER FACE training set to `$DSFD_ROOT/weights/`.
+2. Download our [DSFD model](https://share.weiyun.com/567x0xQ) trained on WIDER FACE training set to `$DSFD_ROOT/weights/`.
 
 
 3. Check out [`tools/demo.py`](https://github.com/TencentYoutuResearch/FaceDetection-DSFD/blob/master/test/demo.py) on how to detect faces using the DSFD model and how to plot detection results.
 
-4. Evaluate the trained model via [`./widerface_test.py`](https://github.com/TencentYoutuResearch/FaceDetection-DSFD/blob/master/test/widerface_test.py) on WIDER FACE.
+4. Evaluate the trained model via [`./widerface_val.py`](https://github.com/TencentYoutuResearch/FaceDetection-DSFD/blob/master/test/widerface_test.py) on WIDER FACE.
 ```
 export CUDA_VISIBLE_DEVICES=0
 python widerface_test.py [--trained_model [TRAINED_MODEL]] [--save_folder [SAVE_FOLDER]] 
