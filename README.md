@@ -50,6 +50,7 @@ Clone the github repository. We will call the cloned directory as `$DSFD_ROOT`.
 ```bash
 git clone https://github.com/TencentYoutuResearch/FaceDetection-DSFD.git
 cd FaceDetection-DSFD
+export CUDA_VISIBLE_DEVICES=0
 ```
 
 
@@ -60,10 +61,17 @@ cd FaceDetection-DSFD
 
 
 3. Check out [`./demo.py`](https://github.com/TencentYoutuResearch/FaceDetection-DSFD/blob/master/test/demo.py) on how to detect faces using the DSFD model and how to plot detection results.
+```
+python demo.py [--trained_model [TRAINED_MODEL]] [--img_root  [IMG_ROOT]] 
+               [--save_folder [SAVE_FOLDER]] [--visual_threshold [VISUAL_THRESHOLD]] 
+    --trained_model      Path to the saved model
+    --img_root           Path of test images
+    --save_folder        Path of output detection resutls
+    --visual_threshold   Confidence threshold
+```
 
 4. Evaluate the trained model via [`./widerface_val.py`](https://github.com/TencentYoutuResearch/FaceDetection-DSFD/blob/master/test/widerface_test.py) on WIDER FACE.
 ```
-export CUDA_VISIBLE_DEVICES=0
 python widerface_test.py [--trained_model [TRAINED_MODEL]] [--save_folder [SAVE_FOLDER]] 
                          [--widerface_root [WIDERFACE_ROOT]]
     --trained_model      Path to the saved model
