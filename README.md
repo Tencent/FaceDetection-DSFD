@@ -2,7 +2,7 @@
 
 [![License](https://img.shields.io/badge/license-BSD-blue.svg)](LICENSE)
 
-By [Jian Li](https://lijiannuist.github.io/), Yabiao Wang, Changan Wang, Ying Tai 
+By [Jian Li](https://lijiannuist.github.io/), [Yabiao Wang](https://github.com/ChaunceyWang), [Changan Wang](https://github.com/HiKapok), [Ying Tai](https://github.com/tyshiwo) 
 
 ## Introduction
 This paper is accepted by CVPR 2019.
