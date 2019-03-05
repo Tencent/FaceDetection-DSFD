@@ -1,4 +1,4 @@
-## DSFD: Dual Shot Face Detector
+## [DSFD: Dual Shot Face Detector](https://arxiv.org/abs/1810.10220)
 
 [![License](https://img.shields.io/badge/license-BSD-blue.svg)](LICENSE)
 
@@ -7,27 +7,33 @@ By [Jian Li](https://lijiannuist.github.io/), [Yabiao Wang](https://github.com/C
 ## Introduction
 This paper is accepted by CVPR 2019.
 
-In this paper, we propose a novel face detection network, named DSFD, with superior performance over the state-of-the-art face detectors. You can use the code to evaluate our DSFD for face detection. For more details, please refer to our paper [DSFD: Dual Shot Face Detector](https://arxiv.org/abs/1810.10220)!
+In this paper, we propose a novel face detection network, named DSFD, with superior performance over the state-of-the-art face detectors. You can use the code to evaluate our DSFD for face detection. 
 
-<p align="left">
-<img src="https://github.com/TencentYoutuResearch/FaceDetection-DSFD/blob/master/imgs/DSFD_framework.PNG" alt="DSFD Framework" width="777px">
+For more details, please refer to our paper [DSFD: Dual Shot Face Detector](https://arxiv.org/abs/1810.10220)!
+
+<p align="center">
+<img src="https://github.com/TencentYoutuResearch/FaceDetection-DSFD/blob/master/imgs/DSFD_framework.PNG" alt="DSFD Framework" width="1000px">
 </p>
 
 Our DSFD face detector achieves state-of-the-art performance on [WIDER FACE](http://mmlab.ie.cuhk.edu.hk/projects/WIDERFace/WiderFace_Results.html) and [FDDB](http://vis-www.cs.umass.edu/fddb/results.html) benchmark.
 
 ### WIDER FACE
-<p align="left">
-<img src="https://github.com/TencentYoutuResearch/FaceDetection-DSFD/blob/master/imgs/DSFD_widerface.PNG" alt="DSFD Widerface Performance" width="777px">
+<p align="center">
+<img src="https://github.com/TencentYoutuResearch/FaceDetection-DSFD/blob/master/imgs/DSFD_widerface.PNG" alt="DSFD Widerface Performance" width="1000px">
 </p>
 
 ### FDDB
-<p align="left">
-<img src="https://github.com/TencentYoutuResearch/FaceDetection-DSFD/blob/master/imgs/DSFD_fddb.PNG" alt="DSFD FDDB Performance" width="777px">
+<p align="center">
+<img src="https://github.com/TencentYoutuResearch/FaceDetection-DSFD/blob/master/imgs/DSFD_fddb.PNG" alt="DSFD FDDB Performance" width="1000px">
 </p>
 
-## Demo
+## Qualitative Results
 <p align='center'>
-  <img src='https://github.com/TencentYoutuResearch/FaceDetection-DSFD/blob/master/imgs/DSFD_demo3.PNG' width='1280'/>
+  <img src='https://github.com/TencentYoutuResearch/FaceDetection-DSFD/blob/master/imgs/DSFD_demo1.PNG' width='1000'/>
+</p>
+
+<p align='center'>
+  <img src='https://github.com/TencentYoutuResearch/FaceDetection-DSFD/blob/master/imgs/DSFD_demo2.PNG' width='1000'/>
 </p>
 
 ## Requirements
@@ -72,10 +78,11 @@ python widerface_test.py [--trained_model [TRAINED_MODEL]] [--save_folder [SAVE_
 
 ### Citing DSFD
 Please cite DSFD in your publications if it helps your research:
-
-	@article{li2018dsfd,
-	  title={DSFD: Dual Shot Face Detector},
-	  author={Li, Jian and Wang, Yabiao and Wang, Changan and Tai, Ying and Qian, Jianjun and Yang, Jian and Wang, Chengjie and Li, Jilin and Huang, Feiyue},
-	  journal={arXiv preprint arXiv:1810.10220},
-	  year={2018}
-	}
+```
+@inproceedings{li2018dsfd,
+  title={DSFD: Dual Shot Face Detector},
+  author={Li, Jian and Wang, Yabiao and Wang, Changan and Tai, Ying and Qian, Jianjun and Yang, Jian and Wang, Chengjie and Li, Jilin and Huang, Feiyue},
+  booktitle={Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition},
+  year={2019}
+}
+```
