@@ -59,7 +59,7 @@ cd FaceDetection-DSFD
 2. Download our [DSFD model](https://share.weiyun.com/567x0xQ) trained on WIDER FACE training set to `$DSFD_ROOT/weights/`.
 
 
-3. Check out [`tools/demo.py`](https://github.com/TencentYoutuResearch/FaceDetection-DSFD/blob/master/test/demo.py) on how to detect faces using the DSFD model and how to plot detection results.
+3. Check out [`./demo.py`](https://github.com/TencentYoutuResearch/FaceDetection-DSFD/blob/master/test/demo.py) on how to detect faces using the DSFD model and how to plot detection results.
 
 4. Evaluate the trained model via [`./widerface_val.py`](https://github.com/TencentYoutuResearch/FaceDetection-DSFD/blob/master/test/widerface_test.py) on WIDER FACE.
 ```

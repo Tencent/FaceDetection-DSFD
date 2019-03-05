@@ -30,7 +30,7 @@ parser.add_argument('--visual_threshold', default=0.01, type=float,
                     help='Final confidence threshold')
 parser.add_argument('--cuda', default=True, type=bool,
                     help='Use cuda to train model')
-parser.add_argument('--widerface_root', default=WIDERFace_ROOT, help='Location of VOC root directory')
+parser.add_argument('--widerface_root', default=WIDERFace_ROOT, help='Location of WIDERFACE root directory')
 args = parser.parse_args()
 
 if args.cuda and torch.cuda.is_available():
@@ -44,7 +44,7 @@ def detect_face(image, shrink):
     x = image
     if shrink != 1:
         x = cv2.resize(image, None, None, fx=shrink, fy=shrink, interpolation=cv2.INTER_LINEAR)
-    print('shrink:{}'.format(shrink))
+    #print('shrink:{}'.format(shrink))
     width = x.shape[1]
     height = x.shape[0]
     x = x.astype(np.float32)
