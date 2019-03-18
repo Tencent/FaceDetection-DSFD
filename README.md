@@ -2,7 +2,7 @@
 
 [![License](https://img.shields.io/badge/license-BSD-blue.svg)](LICENSE)
 
-By [Jian Li](https://lijiannuist.github.io/), [Yabiao Wang](https://github.com/ChaunceyWang), [Changan Wang](https://github.com/HiKapok), [Ying Tai](https://github.com/tyshiwo) 
+By [Jian Li](https://lijiannuist.github.io/), [Yabiao Wang](https://github.com/ChaunceyWang), [Changan Wang](https://github.com/HiKapok), [Ying Tai](https://tyshiwo.github.io/) 
 
 ## Introduction
 This paper is accepted by CVPR 2019.
@@ -84,8 +84,8 @@ python widerface_test.py [--trained_model [TRAINED_MODEL]] [--save_folder [SAVE_
 6. Download the [eval_tool](http://mmlab.ie.cuhk.edu.hk/projects/WIDERFace/support/eval_script/eval_tools.zip) to show the WIDERFACE performance.
 
 
-### Citing DSFD
-Please cite DSFD in your publications if it helps your research:
+### Citation
+If you find DSFD useful in your research, please consider citing: 
 ```
 @inproceedings{li2018dsfd,
   title={DSFD: Dual Shot Face Detector},
