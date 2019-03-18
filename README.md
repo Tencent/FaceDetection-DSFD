@@ -70,18 +70,28 @@ python demo.py [--trained_model [TRAINED_MODEL]] [--img_root  [IMG_ROOT]]
     --visual_threshold   Confidence thresh
 ```
 
-4. Evaluate the trained model via [`./widerface_val.py`](https://github.com/TencentYoutuResearch/FaceDetection-DSFD/blob/master/test/widerface_test.py) on WIDER FACE.
+4. Evaluate the trained model via [`./widerface_val.py`](https://github.com/TencentYoutuResearch/FaceDetection-DSFD/blob/master/test/widerface_val.py) on WIDER FACE.
 ```
-python widerface_test.py [--trained_model [TRAINED_MODEL]] [--save_folder [SAVE_FOLDER]] 
+python widerface_val.py [--trained_model [TRAINED_MODEL]] [--save_folder [SAVE_FOLDER]] 
                          [--widerface_root [WIDERFACE_ROOT]]
     --trained_model      Path to the saved model
     --save_folder        Path of output widerface resutls
     --widerface_root     Path of widerface dataset
 ```
 
-5. Evaluate the trained model via [`./fddb_test.py`](https://github.com/sTencentYoutuResearch/FaceDetection-DSFD/blob/master/test/fddb_test.py) on FDDB.
+5. Download the [eval_tool](http://mmlab.ie.cuhk.edu.hk/projects/WIDERFace/support/eval_script/eval_tools.zip) to show the WIDERFACE performance.
 
-6. Download the [eval_tool](http://mmlab.ie.cuhk.edu.hk/projects/WIDERFace/support/eval_script/eval_tools.zip) to show the WIDERFACE performance.
+6. Evaluate the trained model via [`./fddb_test.py`](https://github.com/sTencentYoutuResearch/FaceDetection-DSFD/blob/master/test/fddb_test.py) on FDDB.
+```
+python widerface_test.py [--trained_model [TRAINED_MODEL]] [--split_dir [SPLIT_DIR]] 
+                         [--data_dir [DATA_DIR]] [--det_dir [DET_DIR]]
+    --trained_model      Path of the saved model
+    --split_dir          Path of fddb folds
+    --data_dir           Path of fddb all images
+    --det_dir            Path to save fddb results
+```
+
+7. Download the [evaluation](http://vis-www.cs.umass.edu/fddb/evaluation.tgz) to show the FDDB performance.
 
 
 ### Citation
