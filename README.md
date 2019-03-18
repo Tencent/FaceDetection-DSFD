@@ -60,7 +60,7 @@ export CUDA_VISIBLE_DEVICES=0
 2. Download our DSFD model [[微云]](https://share.weiyun.com/567x0xQ) [[google drive]](https://drive.google.com/file/d/1WeXlNYsM6dMP3xQQELI-4gxhwKUQxc3-/view?usp=sharing) trained on WIDER FACE training set to `$DSFD_ROOT/weights/`.
 
   
-3. Check out [`./demo.py`](https://github.com/TencentYoutuResearch/FaceDetection-DSFD/blob/master/test/demo.py) on how to detect faces using the DSFD model and how to plot detection results.
+3. Check out [`./demo.py`](https://github.com/TencentYoutuResearch/FaceDetection-DSFD/blob/master/demo.py) on how to detect faces using the DSFD model and how to plot detection results.
 ```
 python demo.py [--trained_model [TRAINED_MODEL]] [--img_root  [IMG_ROOT]] 
                [--save_folder [SAVE_FOLDER]] [--visual_threshold [VISUAL_THRESHOLD]] 
@@ -70,7 +70,7 @@ python demo.py [--trained_model [TRAINED_MODEL]] [--img_root  [IMG_ROOT]]
     --visual_threshold   Confidence thresh
 ```
 
-4. Evaluate the trained model via [`./widerface_val.py`](https://github.com/TencentYoutuResearch/FaceDetection-DSFD/blob/master/test/widerface_val.py) on WIDER FACE.
+4. Evaluate the trained model via [`./widerface_val.py`](https://github.com/TencentYoutuResearch/FaceDetection-DSFD/blob/master/widerface_val.py) on WIDER FACE.
 ```
 python widerface_val.py [--trained_model [TRAINED_MODEL]] [--save_folder [SAVE_FOLDER]] 
                          [--widerface_root [WIDERFACE_ROOT]]
@@ -81,7 +81,7 @@ python widerface_val.py [--trained_model [TRAINED_MODEL]] [--save_folder [SAVE_F
 
 5. Download the [eval_tool](http://mmlab.ie.cuhk.edu.hk/projects/WIDERFace/support/eval_script/eval_tools.zip) to show the WIDERFACE performance.
 
-6. Evaluate the trained model via [`./fddb_test.py`](https://github.com/sTencentYoutuResearch/FaceDetection-DSFD/blob/master/test/fddb_test.py) on FDDB.
+6. Evaluate the trained model via [`./fddb_test.py`](https://github.com/sTencentYoutuResearch/FaceDetection-DSFD/blob/master/fddb_test.py) on FDDB.
 ```
 python widerface_test.py [--trained_model [TRAINED_MODEL]] [--split_dir [SPLIT_DIR]] 
                          [--data_dir [DATA_DIR]] [--det_dir [DET_DIR]]
