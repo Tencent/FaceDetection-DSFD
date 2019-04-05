@@ -1,6 +1,10 @@
 ## [DSFD: Dual Shot Face Detector](https://arxiv.org/abs/1810.10220)
 
 [![License](https://img.shields.io/badge/license-BSD-blue.svg)](LICENSE)
+[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/dsfd-dual-shot-face-detector/face-detection-wider-face-easy)](https://paperswithcode.com/sota/face-detection-wider-face-easy?p=dsfd-dual-shot-face-detector)
+[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/dsfd-dual-shot-face-detector/face-detection-wider-face-medium)](https://paperswithcode.com/sota/face-detection-wider-face-medium?p=dsfd-dual-shot-face-detector)
+[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/dsfd-dual-shot-face-detector/face-detection-wider-face-hard)](https://paperswithcode.com/sota/face-detection-wider-face-hard?p=dsfd-dual-shot-face-detector)
+[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/dsfd-dual-shot-face-detector/face-detection-fddb)](https://paperswithcode.com/sota/face-detection-fddb?p=dsfd-dual-shot-face-detector)
 
 By [Jian Li](https://lijiannuist.github.io/), [Yabiao Wang](https://github.com/ChaunceyWang), [Changan Wang](https://github.com/HiKapok), [Ying Tai](https://tyshiwo.github.io/) 
 
