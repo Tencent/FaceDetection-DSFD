@@ -92,7 +92,7 @@ python widerface_test.py [--trained_model [TRAINED_MODEL]] [--split_dir [SPLIT_D
 ```
 
 7. Download the [evaluation](http://vis-www.cs.umass.edu/fddb/evaluation.tgz) to show the FDDB performance.
-
+8. Lightweight DSFD is [here](https://github.com/lijiannuist/lightDSFD).
 
 ### Citation
 If you find DSFD useful in your research, please consider citing: 
