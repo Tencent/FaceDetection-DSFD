@@ -8,7 +8,7 @@ By [Jian Li](https://lijiannuist.github.io/), [Yabiao Wang](https://github.com/C
 This paper is accepted by CVPR 2019.
 
 <p align='center'>
-  <img src='./imgs/dsfd.gif' width=1000'/>
+  <img src='./imgs/dsfd_video.gif' width=1000'/>
 </p>
 
 In this paper, we propose a novel face detection network, named DSFD, with superior performance over the state-of-the-art face detectors. You can use the code to evaluate our DSFD for face detection. 
