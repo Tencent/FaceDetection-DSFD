@@ -2,7 +2,7 @@
 
 [![License](https://img.shields.io/badge/license-BSD-blue.svg)](LICENSE)
 
-By [Jian Li](https://lijiannuist.github.io/), [Yabiao Wang](https://github.com/ChaunceyWang), [Changan Wang](https://github.com/HiKapok), [Ying Tai](https://tyshiwo.github.io/), [Jianjun Qian](http://www.escience.cn/people/JianjunQian/index.html), [Jian Yang](https://scholar.google.com/citations?user=6CIDtZQAAAAJ&hl=zh-CN&oi=sra), Chengjie Wang, Jilin Li, Feiyue Huang.
+By [Jian Li](https://lijiannuist.github.io/), [Yabiao Wang](https://github.com/ChaunceyWang), [Changan Wang](https://github.com/HiKapok), [Ying Tai](https://tyshiwo.github.io/), Jianjun Qian, Jian Yang, Chengjie Wang, Jilin Li, Feiyue Huang.
 
 ## Introduction
 This paper is accepted by CVPR 2019.
@@ -48,7 +48,7 @@ Our DSFD face detector achieves state-of-the-art performance on [WIDER FACE](htt
 ### Installation
 Clone the github repository. We will call the cloned directory as `$DSFD_ROOT`.
 ```bash
-git clone https://github.com/TencentYoutuResearch/FaceDetection-DSFD.git
+git clone https://git.code.oa.com/YouTu-Research/FaceDetection-DSFD.git
 cd FaceDetection-DSFD
 export CUDA_VISIBLE_DEVICES=0
 ```
@@ -57,7 +57,7 @@ export CUDA_VISIBLE_DEVICES=0
 ### Evaluation
 1. Download the images of [WIDER FACE](http://mmlab.ie.cuhk.edu.hk/projects/WIDERFace/) and [FDDB](https://drive.google.com/open?id=17t4WULUDgZgiSy5kpCax4aooyPaz3GQH) to `$DSFD_ROOT/data/`.
 
-2. Download our DSFD model [[微云]](https://share.weiyun.com/567x0xQ) [[google drive]](https://drive.google.com/file/d/1WeXlNYsM6dMP3xQQELI-4gxhwKUQxc3-/view?usp=sharing) trained on WIDER FACE training set to `$DSFD_ROOT/weights/`.
+2. Download our DSFD model [微云](https://share.weiyun.com/567x0xQ) [google drive](https://drive.google.com/file/d/1WeXlNYsM6dMP3xQQELI-4gxhwKUQxc3-/view?usp=sharing) trained on WIDER FACE training set to `$DSFD_ROOT/weights/`.
 
   
 3. Check out `./demo.py` on how to detect faces using the DSFD model and how to plot detection results.
