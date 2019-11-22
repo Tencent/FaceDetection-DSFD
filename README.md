@@ -4,9 +4,14 @@
 
 By [Jian Li](https://lijiannuist.github.io/), [Yabiao Wang](https://github.com/ChaunceyWang), [Changan Wang](https://github.com/HiKapok), [Ying Tai](https://tyshiwo.github.io/), Jianjun Qian, Jian Yang, Chengjie Wang, Jilin Li, Feiyue Huang.
 
-## Introduction
-This paper is accepted by CVPR 2019.
+## Update
 
+* 2019.04: Release pytorch-version DSFD inference code.
+* 2019.03: DSFD is accepted by CVPR2019.
+* 2018.10: Our DSFD ranks No.1 on [WIDER FACE](http://mmlab.ie.cuhk.edu.hk/projects/WIDERFace/WiderFace_Results.html) and [FDDB](http://vis-www.cs.umass.edu/fddb/results.html)
+
+
+## Introduction
 <p align='center'>
   <img src='./imgs/dsfd_video.gif' width=1000'/>
 </p>
