@@ -7,6 +7,10 @@ By [Jian Li](https://lijiannuist.github.io/), [Yabiao Wang](https://github.com/C
 ## Introduction
 This paper is accepted by CVPR 2019.
 
+<p align='center'>
+  <img src='./imgs/dsfd.gif' width=1000'/>
+</p>
+
 In this paper, we propose a novel face detection network, named DSFD, with superior performance over the state-of-the-art face detectors. You can use the code to evaluate our DSFD for face detection. 
 
 For more details, please refer to our paper [DSFD: Dual Shot Face Detector](https://arxiv.org/abs/1810.10220)!
@@ -25,15 +29,6 @@ Our DSFD face detector achieves state-of-the-art performance on [WIDER FACE](htt
 ### FDDB
 <p align="center">
 <img src="./imgs/DSFD_fddb.PNG" alt="DSFD FDDB Performance" width="1000px">
-</p>
-
-## Qualitative Results
-<p align='center'>
-  <img src='./imgs/DSFD_demo1.PNG' width='1000'/>
-</p>
-
-<p align='center'>
-  <img src='./imgs/DSFD_demo2.PNG' width='1000'/>
 </p>
 
 ## Requirements
@@ -93,6 +88,16 @@ python widerface_test.py [--trained_model [TRAINED_MODEL]] [--split_dir [SPLIT_D
 
 7. Download the [evaluation](http://vis-www.cs.umass.edu/fddb/evaluation.tgz) to show the FDDB performance.
 8. Lightweight DSFD is [here](https://github.com/lijiannuist/lightDSFD).
+
+## Qualitative Results
+<p align='center'>
+  <img src='./imgs/DSFD_demo1.PNG' width='1000'/>
+</p>
+
+<p align='center'>
+  <img src='./imgs/DSFD_demo2.PNG' width='1000'/>
+</p>
+
 
 ### Citation
 If you find DSFD useful in your research, please consider citing: 
