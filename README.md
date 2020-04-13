@@ -1,6 +1,7 @@
 ## [DSFD: Dual Shot Face Detector](https://arxiv.org/abs/1810.10220)
 
 [![License](https://img.shields.io/badge/license-BSD-blue.svg)](LICENSE)
+[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/dsfd-dual-shot-face-detector/face-detection-fddb)](https://paperswithcode.com/sota/face-detection-fddb?p=dsfd-dual-shot-face-detector)
 
 By [Jian Li](https://lijiannuist.github.io/), [Yabiao Wang](https://github.com/ChaunceyWang), [Changan Wang](https://github.com/HiKapok), [Ying Tai](https://tyshiwo.github.io/), [Jianjun Qian](http://www.escience.cn/people/JianjunQian/index.html), [Jian Yang](https://scholar.google.com/citations?user=6CIDtZQAAAAJ&hl=zh-CN&oi=sra), Chengjie Wang, Jilin Li, Feiyue Huang.
 
