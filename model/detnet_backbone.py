@@ -141,8 +141,7 @@ def load_pretrained_imagenet_weights(model, state_dict):
                                    'whose dimensions in the checkpoint are {}.'
                                    .format(name, own_state[name].size(), param.size()))
         else:
-            raise KeyError('unexpected key '{}' in state_dict'
-                           .format(name))
+            raise KeyError('unexpected key \'{}\' in state_dict'.format(name))
 
 
 def detnet59(pretrained=False):
