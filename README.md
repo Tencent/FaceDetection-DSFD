@@ -48,7 +48,7 @@ Our DSFD face detector achieves state-of-the-art performance on [WIDER FACE](htt
 ### Installation
 Clone the github repository. We will call the cloned directory as `$DSFD_ROOT`.
 ```bash
-git clone https://git.code.oa.com/YouTu-Research/FaceDetection-DSFD.git
+git clone xxxxxx/FaceDetection-DSFD.git
 cd FaceDetection-DSFD
 export CUDA_VISIBLE_DEVICES=0
 ```

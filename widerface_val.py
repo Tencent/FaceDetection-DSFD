@@ -195,7 +195,10 @@ def bbox_vote(det):
         except:
             dets = det_accu_sum
 
-    dets = dets[0:750, :]
+    try:
+        dets = dets[0:750, :]
+    except:
+        det = np.array([0, 0, 0.1, 0.1, 0.001])
     return dets
 
 

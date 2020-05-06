@@ -174,8 +174,8 @@ class MultiBoxLoss(nn.Module):
         #pdb.set_trace()
         return loss_l, loss_c
 
-class focalLoss(nn.Module):
-    def __init__(self, num_classes, overlap_thresh, neg_mining, encode_target,  use_gpu=True, gamma = 2, alpha = 0.25, use_pa=True):
+class focalLoss(MultiBoxLoss):
+    def __init__(self, gamma = 2, alpha = 0.25, **kwargs):
         """
             focusing is parameter that can adjust the rate at which easy
             examples are down-weighted.
@@ -184,32 +184,10 @@ class focalLoss(nn.Module):
             If you don't want to focusing factor, set gamma to 1 
             which is same as normal cross entropy loss
         """
-        super(focalLoss, self).__init__()
         self.gamma = gamma
         self.alpha = alpha
-        self.use_gpu = use_gpu
-        self.threshold = overlap_thresh
-        self.num_classes = num_classes
-        self.encode_target = encode_target
-        self.do_neg_mining = neg_mining
-        self.variance = cfg['variance']
-        self.part = ''
-        self.use_pa = use_pa
+        super(focalLoss, self).__init__(**kwargs)
 
-    def forward(self, predictions, targets):
-        if pa and self.use_pa:
-            self.part = 'face'
-            face_loss_l , face_loss_c = self.part_forward( (predictions[0],predictions[1],predictions[2]), targets)
-            self.part = 'head'
-            head_loss_l , head_loss_c = self.part_forward( (predictions[3],predictions[4],predictions[5]), targets)
-            self.part = 'body'
-            body_loss_l , body_loss_c = self.part_forward( (predictions[6],predictions[7],predictions[8]), targets)
-            loss_l = (face_loss_l , head_loss_l , body_loss_l)
-            loss_c = (face_loss_c , head_loss_c , body_loss_c)
-        else:
-            self.part = 'face'
-            loss_l , loss_c = self.part_forward( predictions, targets)
-        return loss_l , loss_c
 
     def part_forward(self, predictions, targets):
         """Multibox Loss
