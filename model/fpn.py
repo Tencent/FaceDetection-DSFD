@@ -22,7 +22,7 @@ from model.utils.net_utils import (_affine_grid_gen, _affine_theta,
 
 
 class _FPN(nn.Module):
-    """ FPN """
+    ''' FPN '''
     def __init__(self, classes, class_agnostic):
         super(_FPN, self).__init__()
         self.classes = classes
@@ -45,9 +45,9 @@ class _FPN(nn.Module):
 
     def _init_weights(self):
         def normal_init(m, mean, stddev, truncated=False):
-            """
+            '''
             weight initalizer: truncated normal and random normal.
-            """
+            '''
             # x is a parameter
             if truncated:
                 m.weight.data.normal_().fmod_(2).mul_(stddev).add_(mean) # not a perfect approximation

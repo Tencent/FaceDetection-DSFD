@@ -131,7 +131,7 @@ def infer_multi_scale_sfd(net , img , transform , thresh , cuda ,  max_im_shrink
 
 
 def vis_detections(im,  dets, image_name , thresh=0.5):
-    """Draw detected bounding boxes."""
+    '''Draw detected bounding boxes.'''
     class_name = 'face'
     inds = np.where(dets[:, -1] >= thresh)[0]
     if len(inds) == 0:

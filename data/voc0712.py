@@ -1,10 +1,10 @@
-"""VOC Dataset Classes
+'''VOC Dataset Classes
 
 Original author: Francisco Massa
 https://github.com/fmassa/vision/blob/voc_dataset/torchvision/datasets/voc.py
 
 Updated by: Ellis Brown, Max deGroot
-"""
+'''
 from __future__ import division
 
 import os.path as osp
@@ -31,11 +31,11 @@ VOC_CLASSES = (  # always index 0
     'sheep', 'sofa', 'train', 'tvmonitor')
 
 # note: if you used our download scripts, this should be right
-VOC_ROOT = osp.join(HOME, "data/VOCdevkit/")
+VOC_ROOT = osp.join(HOME, 'data/VOCdevkit/')
 
 
 class VOCAnnotationTransform(object):
-    """Transforms a VOC annotation into a Tensor of bbox coords and label index
+    '''Transforms a VOC annotation into a Tensor of bbox coords and label index
     Initilized with a dictionary lookup of classnames to indexes
 
     Arguments:
@@ -45,7 +45,7 @@ class VOCAnnotationTransform(object):
             (default: False)
         height (int): height
         width (int): width
-    """
+    '''
 
     def __init__(self, class_to_ind=None, keep_difficult=False):
         self.class_to_ind = class_to_ind or dict(
@@ -53,13 +53,13 @@ class VOCAnnotationTransform(object):
         self.keep_difficult = keep_difficult
 
     def __call__(self, target, width, height):
-        """
+        '''
         Arguments:
             target (annotation) : the target annotation to be made usable
                 will be an ET.Element
         Returns:
             a list containing lists of bounding boxes  [bbox coords, class name]
-        """
+        '''
         res = []
         for obj in target.iter('object'):
             difficult = int(obj.find('difficult').text) == 1
@@ -84,7 +84,7 @@ class VOCAnnotationTransform(object):
 
 
 class VOCDetection(data.Dataset):
-    """VOC Detection Dataset Object
+    '''VOC Detection Dataset Object
 
     input is image, target is annotation
 
@@ -98,7 +98,7 @@ class VOCDetection(data.Dataset):
             (eg: take in caption string, return tensor of word indices)
         dataset_name (string, optional): which dataset to load
             (default: 'VOC2007')
-    """
+    '''
 
     def __init__(self, root=None,
                  image_sets=[('2007', 'trainval'), ('2012', 'trainval')],

@@ -18,7 +18,7 @@ pa = cfg['progressive_anchor']
 ac = cfg['anchor_compensation']
 refine = cfg['refinedet']
 class MultiBoxLoss(nn.Module):
-    """SSD Weighted Loss Function
+    '''SSD Weighted Loss Function
     Compute Targets:
         1) Produce Confidence Target Indices by matching  ground truth boxes
            with (default) 'priorboxes' that have jaccard index > threshold parameter
@@ -38,7 +38,7 @@ class MultiBoxLoss(nn.Module):
             g: ground truth boxes
             N: number of matched default boxes
         See: https://arxiv.org/pdf/1512.02325.pdf for more details.
-    """
+    '''
 
     def __init__(self, num_classes, overlap_thresh, prior_for_matching,
                  bkg_label, neg_mining, neg_pos, neg_overlap, encode_target,
@@ -77,7 +77,7 @@ class MultiBoxLoss(nn.Module):
         return loss_l , loss_c
 
     def part_forward(self, predictions, targets , arm_data=None , filter_negative=False ):
-        """Multibox Loss
+        '''Multibox Loss
         Args:
             predictions (tuple): A tuple containing loc preds, conf preds,
             and prior boxes from SSD net.
@@ -87,7 +87,7 @@ class MultiBoxLoss(nn.Module):
 
             targets (tensor): Ground truth boxes and labels for a batch,
                 shape: [batch_size,num_objs,5] (last idx is the label).
-        """
+        '''
         loc_data, conf_data, priors = predictions
         if arm_data:
           arm_loc_data ,arm_conf_data = arm_data
@@ -181,21 +181,21 @@ class MultiBoxLoss(nn.Module):
 
 class focalLoss(MultiBoxLoss):
     def __init__(self, gamma = 2, alpha = 0.25, **kwargs):
-        """
+        '''
             focusing is parameter that can adjust the rate at which easy
             examples are down-weighted.
             alpha may be set by inverse class frequency or treated as a hyper-param
             If you don't want to balance factor, set alpha to 1
             If you don't want to focusing factor, set gamma to 1 
             which is same as normal cross entropy loss
-        """
+        '''
         self.gamma = gamma
         self.alpha = alpha
         super(focalLoss, self).__init__(**kwargs)
 
 
     def part_forward(self, predictions, targets, **kwargs):
-        """Multibox Loss
+        '''Multibox Loss
         Args:
             predictions (tuple): A tuple containing loc preds, conf preds,
             and prior boxes from SSD net.
@@ -205,7 +205,7 @@ class focalLoss(MultiBoxLoss):
 
             targets (tensor): Ground truth boxes and labels for a batch,
                 shape: [batch_size,num_objs,5] (last idx is the label).
-        """
+        '''
         loc_data, conf_data, priors = predictions
     
         num = loc_data.size(0)
@@ -245,7 +245,7 @@ class focalLoss(MultiBoxLoss):
         loc_loss = F.smooth_l1_loss(loc_p, loc_t, size_average = False)
 
        ############### Confiden Loss part ###############
-        """
+        '''
         #focal loss implementation(1)
         pos_cls = conf_targets > -1 # exclude ignored anchors
         mask = pos_cls.unsqueeze(2).expand_as(conf_preds)
@@ -262,7 +262,7 @@ class focalLoss(MultiBoxLoss):
         # This is focal loss presented in ther paper eq(5)
         conf_loss = -self.alpha * ((1 - p_t)**self.gamma * p_t_log)
         conf_loss = conf_loss.sum()
-        """
+        '''
         # focal loss implementation(2)
         pos_cls = conf_targets >-1
         mask = pos_cls.unsqueeze(2).expand_as(conf_data)

@@ -46,21 +46,21 @@ def get_label_map(label_file):
 
 
 class COCOAnnotationTransform(object):
-    """Transforms a COCO annotation into a Tensor of bbox coords and label index
+    '''Transforms a COCO annotation into a Tensor of bbox coords and label index
     Initilized with a dictionary lookup of classnames to indexes
-    """
+    '''
     def __init__(self):
         self.label_map = get_label_map(osp.join(COCO_ROOT, 'coco_labels.txt'))
 
     def __call__(self, target, width, height):
-        """
+        '''
         Args:
             target (dict): COCO target json annotation as a python dict
             height (int): height
             width (int): width
         Returns:
             a list containing lists of bounding boxes  [bbox coords, class idx]
-        """
+        '''
         scale = np.array([width, height, width, height])
         res = []
         for obj in target:
@@ -73,13 +73,13 @@ class COCOAnnotationTransform(object):
                 final_box.append(label_idx)
                 res += [final_box]  # [xmin, ymin, xmax, ymax, label_idx]
             else:
-                print("no bbox problem!")
+                print('no bbox problem!')
 
         return res  # [[xmin, ymin, xmax, ymax, label_idx], ... ]
 
 
 class COCODetection(data.Dataset):
-    """`MS Coco Detection <http://mscoco.org/dataset/#detections-challenge2016>`_ Dataset.
+    '''`MS Coco Detection <http://mscoco.org/dataset/#detections-challenge2016>`_ Dataset.
     Args:
         root (string): Root directory where images are downloaded to.
         set_name (string): Name of the specific set of COCO images.
@@ -87,7 +87,7 @@ class COCODetection(data.Dataset):
                                         raw images`
         target_transform (callable, optional): A function/transform that takes
         in the target (bbox) and transforms it.
-    """
+    '''
 
     def __init__(self, root, image_set='trainval35k', transform=None,
                  target_transform=COCOAnnotationTransform(), dataset_name='MS COCO'):
@@ -102,13 +102,13 @@ class COCODetection(data.Dataset):
         self.name = dataset_name
 
     def __getitem__(self, index):
-        """
+        '''
         Args:
             index (int): Index
         Returns:
             tuple: Tuple (image, target).
                    target is the object returned by ``coco.loadAnns``.
-        """
+        '''
         im, gt, h, w = self.pull_item(index)
         return im, gt
 
@@ -116,13 +116,13 @@ class COCODetection(data.Dataset):
         return len(self.ids)
 
     def pull_item(self, index):
-        """
+        '''
         Args:
             index (int): Index
         Returns:
             tuple: Tuple (image, target, height, width).
                    target is the object returned by ``coco.loadAnns``.
-        """
+        '''
         img_id = self.ids[index]
         target = self.coco.imgToAnns[img_id]
         ann_ids = self.coco.getAnnIds(imgIds=img_id)

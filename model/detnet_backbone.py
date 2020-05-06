@@ -6,7 +6,7 @@ import torch
 import torch.nn as nn
 #from model.utils.config import cfg
 #from model.fpn.fpn import _FPN
-from torchvision.models.resnet import BasicBlock, Bottleneck, conv3x3, ResNet
+from torchvision.models.resnet import BasicBlock, Bottleneck, ResNet, conv3x3
 
 __all__ = ['DetNet', 'detnet59']
 
@@ -141,19 +141,19 @@ def load_pretrained_imagenet_weights(model, state_dict):
                                    'whose dimensions in the checkpoint are {}.'
                                    .format(name, own_state[name].size(), param.size()))
         else:
-            raise KeyError('unexpected key "{}" in state_dict'
+            raise KeyError('unexpected key '{}' in state_dict'
                            .format(name))
 
 
 def detnet59(pretrained=False):
-    """Constructs a ResNet-50 model.
+    '''Constructs a ResNet-50 model.
 
     Args:
         pretrained (bool): If True, returns a model pre-trained on ImageNet
-    """
+    '''
     model = DetNet(Bottleneck, [3, 4, 6, 3, 3])
     if pretrained:
-        print ("loading pretrained detnet")
+        print ('loading pretrained detnet')
         path = './weights/detnet59.pth'
         state_dict = torch.load(path)
         model.load_state_dict(state_dict)
@@ -175,7 +175,7 @@ class detnet(_FPN):
         detnet = detnet59()
 
         if self.pretrained == True:
-            print("Loading pretrained weights from %s" % (self.model_path))
+            print('Loading pretrained weights from %s' % (self.model_path))
             state_dict = torch.load(self.model_path, map_location=lambda storage, loc: storage)
             detnet.load_state_dict({k: v for k, v in state_dict.items() if k in detnet.state_dict()})
 

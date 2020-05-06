@@ -11,11 +11,11 @@ from ..box_utils import center_size, decode, nms
 
 
 class Detect(Function):
-    """At test time, Detect is the final layer of SSD.  Decode location preds,
+    '''At test time, Detect is the final layer of SSD.  Decode location preds,
     apply non-maximum suppression to location predictions based on conf
     scores and threshold to a top_k number of output predictions for both
     confidence score and locations.
-    """
+    '''
     def __init__(self, num_classes, bkg_label, top_k, conf_thresh, nms_thresh):
         self.num_classes = num_classes
         self.background_label = bkg_label
@@ -28,7 +28,7 @@ class Detect(Function):
         self.variance = cfg['variance']
 
     def forward(self, loc_data, conf_data, prior_data, arm_loc_data=None , arm_conf_data=None):
-        """
+        '''
         Args:
             loc_data: (tensor) Loc preds from loc layers
                 Shape: [batch,num_priors*4]
@@ -36,7 +36,7 @@ class Detect(Function):
                 Shape: [batch*num_priors,num_classes]
             prior_data: (tensor) Prior boxes and variances from priorbox layers
                 Shape: [1,num_priors,4]
-        """
+        '''
         num = loc_data.size(0)  # batch size
         num_priors = prior_data.size(0)
         

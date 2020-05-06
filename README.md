@@ -20,20 +20,20 @@ In this paper, we propose a novel face detection network, named DSFD, with super
 
 For more details, please refer to our paper [DSFD: Dual Shot Face Detector](https://arxiv.org/abs/1810.10220)! or poster [slide](./imgs/DSFD_CVPR2019_poster.pdf)!
 
-<p align="center">
-<img src="./imgs/DSFD_framework.PNG" alt="DSFD Framework" width="1000px">
+<p align='center'>
+<img src='./imgs/DSFD_framework.PNG' alt='DSFD Framework' width='1000px'>
 </p>
 
 Our DSFD face detector achieves state-of-the-art performance on [WIDER FACE](http://mmlab.ie.cuhk.edu.hk/projects/WIDERFace/WiderFace_Results.html) and [FDDB](http://vis-www.cs.umass.edu/fddb/results.html) benchmark.
 
 ### WIDER FACE
-<p align="center">
-<img src="./imgs/DSFD_widerface.PNG" alt="DSFD Widerface Performance" width="1000px">
+<p align='center'>
+<img src='./imgs/DSFD_widerface.PNG' alt='DSFD Widerface Performance' width='1000px'>
 </p>
 
 ### FDDB
-<p align="center">
-<img src="./imgs/DSFD_fddb.PNG" alt="DSFD FDDB Performance" width="1000px">
+<p align='center'>
+<img src='./imgs/DSFD_fddb.PNG' alt='DSFD FDDB Performance' width='1000px'>
 </p>
 
 ## Requirements

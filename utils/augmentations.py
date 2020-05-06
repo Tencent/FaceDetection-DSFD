@@ -24,14 +24,14 @@ def intersect(box_a, box_b):
 
 
 def jaccard_numpy(box_a, box_b):
-    """Compute the jaccard overlap of two sets of boxes.  The jaccard overlap
+    '''Compute the jaccard overlap of two sets of boxes.  The jaccard overlap
     is simply the intersection over union of two boxes.
     Args:
         box_a: Multiple bounding boxes, Shape: [num_boxes,4]
         box_b: Single bounding box, Shape: [4]
     Return:
         jaccard overlap: Shape: [box_a.shape[0], box_a.shape[1]]
-    """
+    '''
     inter = intersect(box_a, box_b)
     area_a = ((box_a[:, 2]-box_a[:, 0]) *
               (box_a[:, 3]-box_a[:, 1]))  # [A,B]
@@ -42,7 +42,7 @@ def jaccard_numpy(box_a, box_b):
 
 
 class Compose(object):
-    """Composes several augmentations together.
+    '''Composes several augmentations together.
     Args:
         transforms (List[Transform]): list of transforms to compose.
     Example:
@@ -50,7 +50,7 @@ class Compose(object):
         >>>     transforms.CenterCrop(10),
         >>>     transforms.ToTensor(),
         >>> ])
-    """
+    '''
 
     def __init__(self, transforms):
         self.transforms = transforms
@@ -62,7 +62,7 @@ class Compose(object):
 
 
 class Lambda(object):
-    """Applies a lambda as a transform."""
+    '''Applies a lambda as a transform.'''
 
     def __init__(self, lambd):
         assert isinstance(lambd, types.LambdaType)
@@ -123,8 +123,8 @@ class RandomSaturation(object):
     def __init__(self, lower=0.5, upper=1.5):
         self.lower = lower
         self.upper = upper
-        assert self.upper >= self.lower, "contrast upper must be >= lower."
-        assert self.lower >= 0, "contrast lower must be non-negative."
+        assert self.upper >= self.lower, 'contrast upper must be >= lower.'
+        assert self.lower >= 0, 'contrast lower must be non-negative.'
 
     def __call__(self, image, boxes=None, labels=None):
         if random.randint(2):
@@ -179,8 +179,8 @@ class RandomContrast(object):
     def __init__(self, lower=0.5, upper=1.5):
         self.lower = lower
         self.upper = upper
-        assert self.upper >= self.lower, "contrast upper must be >= lower."
-        assert self.lower >= 0, "contrast lower must be non-negative."
+        assert self.upper >= self.lower, 'contrast upper must be >= lower.'
+        assert self.lower >= 0, 'contrast lower must be non-negative.'
 
     # expects float image
     def __call__(self, image, boxes=None, labels=None):
@@ -214,7 +214,7 @@ class ToTensor(object):
 
 
 class RandomSampleCrop(object):
-    """Crop
+    '''Crop
     Arguments:
         img (Image): the image being input during training
         boxes (Tensor): the original bounding boxes in pt form
@@ -225,7 +225,7 @@ class RandomSampleCrop(object):
             img (Image): the cropped image
             boxes (Tensor): the adjusted bounding boxes in pt form
             labels (Tensor): the class labels for each bbox
-    """
+    '''
     def __init__(self):
         self.sample_options = (
             # using entire original input image
@@ -319,7 +319,7 @@ class RandomSampleCrop(object):
 
 
 class RandomBaiduCrop(object):
-    """Crop
+    '''Crop
     Arguments:
         img (Image): the image being input during training
         boxes (Tensor): the original bounding boxes in pt form
@@ -330,7 +330,7 @@ class RandomBaiduCrop(object):
             img (Image): the cropped image
             boxes (Tensor): the adjusted bounding boxes in pt form
             labels (Tensor): the class labels for each bbox
-    """
+    '''
     def __init__(self , size):
         
         self.mean = np.array([104, 117, 123],dtype=np.float32)
@@ -482,23 +482,23 @@ class RandomMirror(object):
 
 
 class SwapChannels(object):
-    """Transforms a tensorized image by swapping the channels in the order
+    '''Transforms a tensorized image by swapping the channels in the order
      specified in the swap tuple.
     Args:
         swaps (int triple): final order of channels
             eg: (2, 1, 0)
-    """
+    '''
 
     def __init__(self, swaps):
         self.swaps = swaps
 
     def __call__(self, image):
-        """
+        '''
         Args:
             image (Tensor): image tensor to be transformed
         Return:
             a tensor with channels swapped according to swap
-        """
+        '''
         # if torch.is_tensor(image):
         #     image = image.data.cpu().numpy()
         # else:

@@ -25,7 +25,7 @@ model_urls = {
 }
 
 def conv3x3(in_planes, out_planes, stride=1):
-  "3x3 convolution with padding"
+  '3x3 convolution with padding'
   return nn.Conv2d(in_planes, out_planes, kernel_size=3, stride=stride,
            padding=1, bias=False)
 
@@ -161,10 +161,10 @@ class ResNet(nn.Module):
 
 
 def resnet18(pretrained=False):
-  """Constructs a ResNet-18 model.
+  '''Constructs a ResNet-18 model.
   Args:
     pretrained (bool): If True, returns a model pre-trained on ImageNet
-  """
+  '''
   model = ResNet(BasicBlock, [2, 2, 2, 2])
   if pretrained:
     model.load_state_dict(model_zoo.load_url(model_urls['resnet18']))
@@ -172,10 +172,10 @@ def resnet18(pretrained=False):
 
 
 def resnet34(pretrained=False):
-  """Constructs a ResNet-34 model.
+  '''Constructs a ResNet-34 model.
   Args:
     pretrained (bool): If True, returns a model pre-trained on ImageNet
-  """
+  '''
   model = ResNet(BasicBlock, [3, 4, 6, 3])
   if pretrained:
     model.load_state_dict(model_zoo.load_url(model_urls['resnet34']))
@@ -183,10 +183,10 @@ def resnet34(pretrained=False):
 
 
 def resnet50(pretrained=False):
-  """Constructs a ResNet-50 model.
+  '''Constructs a ResNet-50 model.
   Args:
     pretrained (bool): If True, returns a model pre-trained on ImageNet
-  """
+  '''
   model = ResNet(Bottleneck, [3, 4, 6, 3])
   if pretrained:
     model.load_state_dict(model_zoo.load_url(model_urls['resnet50']))
@@ -194,10 +194,10 @@ def resnet50(pretrained=False):
 
 
 def resnet101(pretrained=False):
-  """Constructs a ResNet-101 model.
+  '''Constructs a ResNet-101 model.
   Args:
     pretrained (bool): If True, returns a model pre-trained on ImageNet
-  """
+  '''
   model = ResNet(Bottleneck, [3, 4, 23, 3])
   if pretrained:
     model.load_state_dict(model_zoo.load_url(model_urls['resnet101']))
@@ -205,10 +205,10 @@ def resnet101(pretrained=False):
 
 
 def resnet152(pretrained=False):
-  """Constructs a ResNet-152 model.
+  '''Constructs a ResNet-152 model.
   Args:
     pretrained (bool): If True, returns a model pre-trained on ImageNet
-  """
+  '''
   model = ResNet(Bottleneck, [3, 8, 36, 3])
   if pretrained:
     model.load_state_dict(model_zoo.load_url(model_urls['resnet152']))
@@ -227,7 +227,7 @@ class resnet(_FPN):
     resnet = resnet101()
 
     if self.pretrained == True:
-      print("Loading pretrained weights from %s" %(self.model_path))
+      print('Loading pretrained weights from %s' %(self.model_path))
       state_dict = torch.load(self.model_path)
       resnet.load_state_dict({k:v for k,v in state_dict.items() if k in resnet.state_dict()})
 

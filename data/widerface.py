@@ -13,20 +13,20 @@ import scipy.io
 import torch
 import torch.utils.data as data
 
-"""WIDER Face Dataset Classes
+'''WIDER Face Dataset Classes
 author: swordli
-"""
+'''
 #from .config import HOME
-sys.path.append("/f/home/jianli/code/s3fd.180716/")
+sys.path.append('/f/home/jianli/code/s3fd.180716/')
 plt.switch_backend('agg')
 
 WIDERFace_CLASSES = ['face']  # always index 0
 # note: if you used our download scripts, this should be right
-WIDERFace_ROOT = "/data2/lijian/widerface/data/"
+WIDERFace_ROOT = '/data2/lijian/widerface/data/'
 
 
 class WIDERFaceAnnotationTransform(object):
-    """Transforms a WIDERFace annotation into a Tensor of bbox coords and label index
+    '''Transforms a WIDERFace annotation into a Tensor of bbox coords and label index
     Initilized with a dictionary lookup of classnames to indexes
 
     Arguments:
@@ -36,20 +36,20 @@ class WIDERFaceAnnotationTransform(object):
             (default: False)
         height (int): height
         width (int): width
-    """
+    '''
 
     def __init__(self, class_to_ind=None):
         self.class_to_ind = class_to_ind or dict(
             zip(WIDERFace_CLASSES, range(len(WIDERFace_CLASSES))))
 
     def __call__(self, target, width, height):
-        """
+        '''
         Arguments:
             target (annotation) : the target annotation to be made usable
                 will be an ET.Element
         Returns:
             a list containing lists of bounding boxes  [bbox coords, class name]
-        """
+        '''
         for i in range(len(target)):
 
             '''
@@ -75,7 +75,7 @@ class WIDERFaceAnnotationTransform(object):
             # filter error bbox
             
             #if target[i][0] >= target[i][2] or target[i][1] >= target[i][3] or target[i][0] < 0 or target[i][1] < 0 or target[i][2] > 1 or target[i][3] > 1 :
-            #    print ("error bbox: " ,  target[i])
+            #    print ('error bbox: ' ,  target[i])
             
             '''
             assert target[i][0] >= 0.001
@@ -89,7 +89,7 @@ class WIDERFaceAnnotationTransform(object):
         return target  # [[xmin, ymin, xmax, ymax, label_ind], ... ]
 
 class WIDERFaceDetection(data.Dataset):
-    """WIDERFace Detection Dataset Object   
+    '''WIDERFace Detection Dataset Object   
     http://mmlab.ie.cuhk.edu.hk/projects/WIDERFace/
 
     input is image, target is annotation
@@ -104,7 +104,7 @@ class WIDERFaceDetection(data.Dataset):
             (eg: take in caption string, return tensor of word indices)
         dataset_name (string, optional): which dataset to load
             (default: 'WIDERFace')
-    """
+    '''
 
     def __init__(self, root,
                  image_sets='train',
@@ -132,17 +132,17 @@ class WIDERFaceDetection(data.Dataset):
         if self.image_set == 'train':
             path_to_label = osp.join ( self.root , 'wider_face_split' ) 
             path_to_image = osp.join ( self.root , 'WIDER_train/images' )
-            fname = "wider_face_train.mat"
+            fname = 'wider_face_train.mat'
 
         if self.image_set == 'val':
             path_to_label = osp.join ( self.root , 'wider_face_split' ) 
             path_to_image = osp.join ( self.root , 'WIDER_val/images' )
-            fname = "wider_face_val.mat"
+            fname = 'wider_face_val.mat'
 
         if self.image_set == 'test':
             path_to_label = osp.join ( self.root , 'wider_face_split' ) 
             path_to_image = osp.join ( self.root , 'WIDER_test/images' )
-            fname = "wider_face_test.mat"
+            fname = 'wider_face_test.mat'
 
         self.path_to_label = path_to_label
         self.path_to_image = path_to_image
@@ -190,7 +190,7 @@ class WIDERFaceDetection(data.Dataset):
                 self.event_ids.append( directory )
                 self.label_ids.append( bboxes )
                 #yield DATA(os.path.join(self.path_to_image, directory,  im_name + '.jpg'), bboxes)
-        print("Error bbox number to filter : %d,  bbox number: %d"  %(error_bbox , train_bbox))
+        print('Error bbox number to filter : %d,  bbox number: %d'  %(error_bbox , train_bbox))
         
 
     def __getitem__(self, index):
@@ -224,11 +224,11 @@ class WIDERFaceDetection(data.Dataset):
 
     def vis_detections(self , im,  dets, image_name ):
 
-        cv2.imwrite("./tmp_res/"+str(image_name)+"ori.jpg" , im)
+        cv2.imwrite('./tmp_res/'+str(image_name)+'ori.jpg' , im)
         print (im)
         size = im.shape[0]
         dets = dets*size
-        """Draw detected bounding boxes."""
+        '''Draw detected bounding boxes.'''
         class_name = 'face'
         #im = im[:, :, (2, 1, 0)]
         fig, ax = plt.subplots(figsize=(12, 12))
@@ -244,18 +244,18 @@ class WIDERFaceDetection(data.Dataset):
                 )
         plt.axis('off')
         plt.tight_layout()
-        plt.savefig('./tmp_res/'+str(image_name)+".jpg", dpi=fig.dpi)
+        plt.savefig('./tmp_res/'+str(image_name)+'.jpg', dpi=fig.dpi)
 
     def vis_detections_v2(self , im,  dets, image_name ):
         size = im.shape[0]
         dets = dets*size
-        """Draw detected bounding boxes."""
+        '''Draw detected bounding boxes.'''
         class_name = 'face'
         for i in range(len(dets)):
             bbox = dets[i, :4]
             #print ((bbox[0],bbox[1]), (bbox[2],bbox[3]) )
             cv2.rectangle( im , (int(bbox[0]),int(bbox[1])), (int(bbox[2]),int(bbox[3])), (0,255,0),5 )
-        cv2.imwrite('./tmp_res/'+str(image_name)+".jpg", im)
+        cv2.imwrite('./tmp_res/'+str(image_name)+'.jpg', im)
 
     def pull_image(self, index):
         '''Returns the original image object at index in PIL form
@@ -288,7 +288,7 @@ class WIDERFaceDetection(data.Dataset):
         img_id = self.img_ids[index]
         anno = self.label_ids[index]
         gt = self.target_transform(anno, 1, 1)
-        return img_id.split("/")[-1], gt
+        return img_id.split('/')[-1], gt
 
     def pull_tensor(self, index):
         '''Returns the original image at an index in tensor form

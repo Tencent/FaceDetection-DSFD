@@ -46,7 +46,7 @@ class FEM(nn.Module):
         return torch.cat([x1_1, x2_1, x3_1] , 1)
 
 class SSD(nn.Module):
-    """Single Shot Multibox Architecture
+    '''Single Shot Multibox Architecture
     The network is composed of a base VGG network followed by the
     added multibox conv layers.  Each multibox layer branches into
         1) conv2d for class conf scores
@@ -56,12 +56,12 @@ class SSD(nn.Module):
     See: https://arxiv.org/pdf/1512.02325.pdf for more details.
 
     Args:
-        phase: (string) Can be "test" or "train"
+        phase: (string) Can be 'test' or 'train'
         size: input image size
         base: VGG16 layers for input, size of either 300 or 500
         extras: extra layers that feed to multibox loc and conf layers
-        head: "multibox head" consists of loc and conf conv layers
-    """
+        head: 'multibox head' consists of loc and conf conv layers
+    '''
 
     def __init__(self, phase, size, num_classes):
         super(SSD, self).__init__()
@@ -94,7 +94,7 @@ class SSD(nn.Module):
                 nn.ReLU(inplace=True)]
             )
         elif backbone in ['resnet50' , 'resnet101' , 'resnet152' , 'senet'] :
-             print("loading pretrained resnet model")
+             print('loading pretrained resnet model')
              if backbone == 'resnet101':
                  resnet = torchvision.models.resnet101(pretrained=True)
              elif backbone == 'resnet50':
@@ -192,7 +192,7 @@ class SSD(nn.Module):
         return prior
         
     def forward(self, x):
-        """Applies network layers and ops on input image(s) x.
+        '''Applies network layers and ops on input image(s) x.
 
         Args:
             x: input image or batch of images. Shape: [batch,3,300,300].
@@ -209,7 +209,7 @@ class SSD(nn.Module):
                     1: confidence layers, Shape: [batch*num_priors,num_classes]
                     2: localization layers, Shape: [batch,num_priors*4]
                     3: priorbox layers, Shape: [2,num_priors*4]
-        """
+        '''
         image_size = [x.shape[2] , x.shape[3]]
         loc = list()
         conf = list()
@@ -329,7 +329,7 @@ class SSD(nn.Module):
         else:
             face_loc = torch.cat([o.view(o.size(0), -1) for o in loc], 1)
             face_conf = torch.cat([o.view(o.size(0), -1) for o in conf], 1)
-        if self.phase == "test":
+        if self.phase == 'test':
             self.cfg['feature_maps'] = featuremap_size
             self.cfg['min_dim'] = image_size
             self.priors = self.init_priors(self.cfg)
@@ -548,10 +548,10 @@ def pa_multibox(output_channels, mbox_cfg, num_classes):
 '''
 
 def build_ssd(phase, size=640, num_classes=2):
-    if phase != "test" and phase != "train":
-        print("ERROR: Phase: " + phase + " not recognized")
+    if phase != 'test' and phase != 'train':
+        print('ERROR: Phase: ' + phase + ' not recognized')
         return
     if size!=640:
-        print("ERROR: You specified size " + repr(size) + ". However, " +
-              "currently only SSD640 (size=640) is supported!")
+        print('ERROR: You specified size ' + repr(size) + '. However, ' +
+              'currently only SSD640 (size=640) is supported!')
     return SSD(phase, size, num_classes)

@@ -26,7 +26,8 @@ from data import (WIDERFace_ROOT, WIDERFaceAnnotationTransform,
                   WIDERFaceDetection)
 from face_ssd import build_ssd
 from utils import draw_toolbox
-from widerface_val import bbox_vote, detect_face, multi_scale_test, multi_scale_test_pyramid
+from widerface_val import (bbox_vote, detect_face, multi_scale_test,
+                           multi_scale_test_pyramid)
 
 #plt.switch_backend('agg')
 
@@ -119,7 +120,7 @@ def test_fddbface():
 
                 # if not os.path.exists(save_path + event):
                 #     os.makedirs(save_path + event)
-                # f = open(save_path + event + '/' + img_id.split(".")[0] + '.txt', 'w')
+                # f = open(save_path + event + '/' + img_id.split('.')[0] + '.txt', 'w')
                 # #f = open(save_path + str(event[0][0].encode('utf-8'))[2:-1]  + '/' + im_name + '.txt', 'w')
                 # write_to_txt(f, dets , event, img_id)
 
@@ -152,5 +153,5 @@ def test_fddbface():
         sys.stdout.write('\n')
         sys.stdout.flush()
 
-if __name__=="__main__":
+if __name__=='__main__':
     test_fddbface()

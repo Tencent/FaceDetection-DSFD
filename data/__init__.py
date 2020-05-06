@@ -14,7 +14,7 @@ from .widerface import (WIDERFace_CLASSES, WIDERFace_ROOT,
 
 
 def detection_collate(batch):
-    """Custom collate fn for dealing with batches of images that have a different
+    '''Custom collate fn for dealing with batches of images that have a different
     number of associated object annotations (bounding boxes).
 
     Arguments:
@@ -25,7 +25,7 @@ def detection_collate(batch):
             1) (tensor) batch of images stacked on their 0 dim
             2) (list of tensors) annotations for a given image are stacked on
                                  0 dim
-    """
+    '''
     targets = []
     imgs = []
     for sample in batch:

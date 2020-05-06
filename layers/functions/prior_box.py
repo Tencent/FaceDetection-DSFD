@@ -8,9 +8,9 @@ import torch
 
 
 class PriorBox(object):
-    """Compute priorbox coordinates in center-offset form for each source
+    '''Compute priorbox coordinates in center-offset form for each source
     feature map.
-    """
+    '''
     def __init__(self, cfg , min_size, max_size):
         super(PriorBox, self).__init__()
         self.image_size = cfg['min_dim']

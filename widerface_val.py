@@ -238,7 +238,7 @@ testset = WIDERFaceDetection(args.widerface_root, 'val' , None, WIDERFaceAnnotat
 
 
 def vis_detections(imgid, im,  dets, thresh=0.5):
-    """Draw detected bounding boxes."""
+    '''Draw detected bounding boxes.'''
     class_name = 'face'
     inds = np.where(dets[:, -1] >= thresh)[0]
     if len(inds) == 0:
@@ -271,7 +271,7 @@ def vis_detections(imgid, im,  dets, thresh=0.5):
     plt.savefig('./val_pic_res/'+str(imgid), dpi=fig.dpi)
 
 
-print("Finished loading data")    
+print('Finished loading data')    
 def test_widerface():
     # evaluation
     cuda = args.cuda
@@ -302,8 +302,8 @@ def test_widerface():
         
         if not os.path.exists(save_path + event):
             os.makedirs(save_path + event)
-        f = open(save_path + event + '/' + img_id.split(".")[0] + '.txt', 'w')
+        f = open(save_path + event + '/' + img_id.split('.')[0] + '.txt', 'w')
         write_to_txt(f, dets , event, img_id)
         
-if __name__=="__main__":
+if __name__=='__main__':
     test_widerface()
