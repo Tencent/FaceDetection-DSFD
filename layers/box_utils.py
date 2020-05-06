@@ -1,9 +1,12 @@
 # -*- coding: utf-8 -*-
 from __future__ import division
-import torch
+
 import math
 import pdb
+
 import numpy as np
+import torch
+
 
 def point_form(boxes):
     """ Convert prior_boxes to (xmin, ymin, xmax, ymax)

@@ -1,29 +1,32 @@
-from __future__ import absolute_import
-from __future__ import division
-from __future__ import print_function
+from __future__ import absolute_import, division, print_function
 
-import sys
-import os
 import argparse
-import torch
-import torch.nn as nn
-import torch.backends.cudnn as cudnn
-import torchvision.transforms as transforms
-from torch.autograd import Variable
-from data import WIDERFace_ROOT , WIDERFace_CLASSES as labelmap
-from PIL import Image
-from data import WIDERFaceDetection, WIDERFaceAnnotationTransform, WIDERFace_CLASSES, WIDERFace_ROOT, BaseTransform , TestBaseTransform
-from data import *
-import torch.utils.data as data
-from face_ssd import build_ssd
-import pdb
-import numpy as np
-import cv2
 import math
+import os
+import pdb
+import sys
 #import matplotlib.pyplot as plt
 import time
-from scipy.misc import imread, imsave, imshow, imresize
-from widerface_val import detect_face, multi_scale_test, bbox_vote
+
+import cv2
+import numpy as np
+import torch
+import torch.backends.cudnn as cudnn
+import torch.nn as nn
+import torch.utils.data as data
+import torchvision.transforms as transforms
+from PIL import Image
+from scipy.misc import imread, imresize, imsave, imshow
+from torch.autograd import Variable
+
+from data import *
+from data import BaseTransform, TestBaseTransform
+from data import WIDERFace_CLASSES as labelmap
+from data import (WIDERFace_ROOT, WIDERFaceAnnotationTransform,
+                  WIDERFaceDetection)
+from face_ssd import build_ssd
+from utils import draw_toolbox
+from widerface_val import bbox_vote, detect_face, multi_scale_test, multi_scale_test_pyramid
 
 #plt.switch_backend('agg')
 
@@ -50,33 +53,6 @@ else:
     torch.set_default_tensor_type('torch.FloatTensor')
 
 
-def multi_scale_test_pyramid(image, max_shrink):
-    # shrink detecting and shrink only detect big face
-    det_b = detect_face(image, 0.25)
-    index = np.where(
-        np.maximum(det_b[:, 2] - det_b[:, 0] + 1, det_b[:, 3] - det_b[:, 1] + 1)
-        > 30)[0]
-    det_b = det_b[index, :]
-
-    st = [1.25, 1.75, 2.25]
-    for i in range(len(st)):
-        if (st[i] <= max_shrink):
-            det_temp = detect_face(image, st[i])
-            # enlarge only detect small face
-            if st[i] > 1:
-                index = np.where(
-                    np.minimum(det_temp[:, 2] - det_temp[:, 0] + 1,
-                               det_temp[:, 3] - det_temp[:, 1] + 1) < 100)[0]
-                det_temp = det_temp[index, :]
-            else:
-                index = np.where(
-                    np.maximum(det_temp[:, 2] - det_temp[:, 0] + 1,
-                               det_temp[:, 3] - det_temp[:, 1] + 1) > 30)[0]
-                det_temp = det_temp[index, :]
-            det_b = np.row_stack((det_b, det_temp))
-    return det_b
-
-
 
 def flip_test(image, shrink):
     image_f = cv2.flip(image, 1)
@@ -101,7 +77,6 @@ net.eval()
 print('Finished loading model!')
 
 
-from utils import draw_toolbox
 def test_fddbface():
     # evaluation
     cuda = args.cuda

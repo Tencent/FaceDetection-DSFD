@@ -1,13 +1,18 @@
 # -*- coding: utf-8 -*-
-from __future__ import division , print_function
+from __future__ import division, print_function
+
+import pdb
+
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
 from torch.autograd import Variable
-from ..box_utils import refine_match, pa_sfd_match, sfd_match, match, log_sum_exp
-import pdb
 
-from data import  widerface_640
+from data import widerface_640
+
+from ..box_utils import (log_sum_exp, match, pa_sfd_match, refine_match,
+                         sfd_match)
+
 cfg = widerface_640
 pa = cfg['progressive_anchor']
 ac = cfg['anchor_compensation']
@@ -189,7 +194,7 @@ class focalLoss(MultiBoxLoss):
         super(focalLoss, self).__init__(**kwargs)
 
 
-    def part_forward(self, predictions, targets):
+    def part_forward(self, predictions, targets, **kwargs):
         """Multibox Loss
         Args:
             predictions (tuple): A tuple containing loc preds, conf preds,

@@ -1,20 +1,23 @@
-from __future__ import division , print_function
+from __future__ import division, print_function
+
+import os.path as osp
+import pdb
+import sys
+from collections import defaultdict
+
+import cv2
+import matplotlib.pyplot as plt
+import numpy as np
+#from utils.augmentations import SSDAugmentation
+import scipy.io
+import torch
+import torch.utils.data as data
+
 """WIDER Face Dataset Classes
 author: swordli
 """
 #from .config import HOME
-import os.path as osp
-import sys
-import torch
-import torch.utils.data as data
-import cv2
-import numpy as np
 sys.path.append("/f/home/jianli/code/s3fd.180716/")
-#from utils.augmentations import SSDAugmentation
-import scipy.io
-import pdb
-from collections import defaultdict
-import matplotlib.pyplot as plt
 plt.switch_backend('agg')
 
 WIDERFace_CLASSES = ['face']  # always index 0

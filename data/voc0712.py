@@ -6,14 +6,18 @@ https://github.com/fmassa/vision/blob/voc_dataset/torchvision/datasets/voc.py
 Updated by: Ellis Brown, Max deGroot
 """
 from __future__ import division
-import pdb
-from .config import HOME
+
 import os.path as osp
+import pdb
 import sys
-import torch
-import torch.utils.data as data
+
 import cv2
 import numpy as np
+import torch
+import torch.utils.data as data
+
+from .config import HOME
+
 if sys.version_info[0] == 2:
     import xml.etree.cElementTree as ET
 else:
@@ -96,7 +100,7 @@ class VOCDetection(data.Dataset):
             (default: 'VOC2007')
     """
 
-    def __init__(self, root,
+    def __init__(self, root=None,
                  image_sets=[('2007', 'trainval'), ('2012', 'trainval')],
                  transform=None, target_transform=VOCAnnotationTransform(),
                  dataset_name='VOC0712'):

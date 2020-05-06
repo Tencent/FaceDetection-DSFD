@@ -1,9 +1,10 @@
 from __future__ import division
+
 import torch
 import torch.nn as nn
-from torch.autograd import Function
-from torch.autograd import Variable
 import torch.nn.init as init
+from torch.autograd import Function, Variable
+
 
 class L2Norm(nn.Module):
     def __init__(self,n_channels, scale):

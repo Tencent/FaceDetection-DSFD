@@ -1,8 +1,11 @@
 from __future__ import division
-from math import sqrt as sqrt
-from itertools import product as product
-import torch
+
 import pdb
+from itertools import product as product
+from math import sqrt as sqrt
+
+import torch
+
 
 class PriorBox(object):
     """Compute priorbox coordinates in center-offset form for each source
@@ -57,14 +60,14 @@ class PriorBox(object):
                 # aspect_ratio: 1
                 # rel size: sqrt(s_k * s_(k+1))
                 #s_k_prime = sqrt(s_k * (self.max_sizes[k]/self.image_size))
-                if len(self.max_sizes) == len(self.min_sizes):
-                    s_k_prime_i = sqrt(s_k_i * (self.max_sizes[k]/self.image_size[1]))
-                    s_k_prime_j = sqrt(s_k_j * (self.max_sizes[k]/self.image_size[0]))    
-                    mean += [cx, cy, s_k_prime_i, s_k_prime_j]
+                # if len(self.max_sizes) == len(self.min_sizes):
+                #     s_k_prime_i = sqrt(s_k_i * (self.max_sizes[k]/self.image_size[1]))
+                #     s_k_prime_j = sqrt(s_k_j * (self.max_sizes[k]/self.image_size[0]))    
+                #     mean += [cx, cy, s_k_prime_i, s_k_prime_j]
                 # rest of aspect ratios
                 for ar in self.aspect_ratios[k]:
-                    if len(self.max_sizes) == len(self.min_sizes):
-                        mean += [cx, cy, s_k_prime_i/sqrt(ar), s_k_prime_j*sqrt(ar)]
+                    # if len(self.max_sizes) == len(self.min_sizes):
+                    #     mean += [cx, cy, s_k_prime_i/sqrt(ar), s_k_prime_j*sqrt(ar)]
                     mean += [cx, cy, s_k_i/sqrt(ar), s_k_j*sqrt(ar)]
                 
         # back to torch land

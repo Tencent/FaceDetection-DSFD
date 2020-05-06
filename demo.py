@@ -1,26 +1,32 @@
-from __future__ import print_function 
-import sys
-import os
+from __future__ import print_function
+
 import argparse
-import torch
-import torch.nn as nn
-import torch.backends.cudnn as cudnn
-import torchvision.transforms as transforms
-from torch.autograd import Variable
-from data import WIDERFace_ROOT , WIDERFace_CLASSES as labelmap
-from PIL import Image
-from data import WIDERFaceDetection, WIDERFaceAnnotationTransform, WIDERFace_CLASSES, WIDERFace_ROOT, BaseTransform , TestBaseTransform
-from data import *
-import torch.utils.data as data
-from face_ssd import build_ssd
+import math
+import os
 #from resnet50_ssd import build_sfd
 import pdb
-import numpy as np
-import cv2
-import math
-import matplotlib.pyplot as plt
+import sys
 import time
+
+import cv2
+import matplotlib.pyplot as plt
+import numpy as np
+import torch
+import torch.backends.cudnn as cudnn
+import torch.nn as nn
+import torch.utils.data as data
+import torchvision.transforms as transforms
+from PIL import Image
+from torch.autograd import Variable
+
+from data import *
+from data import BaseTransform, TestBaseTransform
+from data import WIDERFace_CLASSES as labelmap
+from data import (WIDERFace_ROOT, WIDERFaceAnnotationTransform,
+                  WIDERFaceDetection)
+from face_ssd import build_ssd
 from widerface_val import bbox_vote
+
 plt.switch_backend('agg')
 
 parser = argparse.ArgumentParser(description='DSFD:Dual Shot Face Detector')

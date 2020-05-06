@@ -1,9 +1,14 @@
 from __future__ import division
+
+import pdb
+
 import torch
 from torch.autograd import Function
-from ..box_utils import decode, nms, center_size
+
 from data import widerface_640 as cfg
-import pdb
+
+from ..box_utils import center_size, decode, nms
+
 
 class Detect(Function):
     """At test time, Detect is the final layer of SSD.  Decode location preds,

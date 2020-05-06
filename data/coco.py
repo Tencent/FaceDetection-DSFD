@@ -1,13 +1,16 @@
-from __future__ import division , print_function
-from .config import HOME
+from __future__ import division, print_function
+
 import os
 import os.path as osp
 import sys
+
+import cv2
+import numpy as np
 import torch
 import torch.utils.data as data
 import torchvision.transforms as transforms
-import cv2
-import numpy as np
+
+from .config import HOME
 
 COCO_ROOT = osp.join(HOME, 'data/coco/')
 IMAGES = 'images'

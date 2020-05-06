@@ -1,18 +1,17 @@
-from __future__ import absolute_import
-from __future__ import division
-from __future__ import print_function
+from __future__ import absolute_import, division, print_function
 
-#from model.utils.config import cfg
-#from model.fpn.fpn import _FPN
-from torchvision.models.resnet import conv3x3, BasicBlock, Bottleneck
+import math
+
 import torch
 import torch.nn as nn
-import math
+#from model.utils.config import cfg
+#from model.fpn.fpn import _FPN
+from torchvision.models.resnet import BasicBlock, Bottleneck, conv3x3, ResNet
 
 __all__ = ['DetNet', 'detnet59']
 
 
-class BottleneckA(nn.Module):
+class BottleneckA(Bottleneck):
     expansion = 4
 
     def __init__(self, inplanes, planes, stride=1, downsample=None):
@@ -31,51 +30,18 @@ class BottleneckA(nn.Module):
         self.downsample = downsample
         self.stride = stride
 
-    def forward(self, x):
-        residual = x
 
-        out = self.conv1(x)
-        out = self.bn1(out)
-        out = self.relu(out)
-
-        out = self.conv2(out)
-        out = self.bn2(out)
-        out = self.relu(out)
-
-        out = self.conv3(out)
-        out = self.bn3(out)
-
-        if self.downsample is not None:  # downsample always is None, because stride=1 and inplanes=expansion * planes
-            residual = self.downsample(x)
-
-        out += residual
-        out = self.relu(out)
-
-        return out
-
-
-class BottleneckB(nn.Module):
-    expansion = 4
-
+class BottleneckB(BottleneckA):
     def __init__(self, inplanes, planes, stride=1, downsample=None):
-        super(BottleneckB, self).__init__()
         assert inplanes == (planes * 4), 'inplanes != planes * 4'
         assert stride == 1, 'stride != 1'
         assert downsample is None, 'downsample is not None'
-        self.conv1 = nn.Conv2d(inplanes, planes, kernel_size=1, bias=False)  # inplanes = 1024, planes = 256
-        self.bn1 = nn.BatchNorm2d(planes)
-        self.conv2 = nn.Conv2d(planes, planes, kernel_size=3, stride=1, dilation=2,
-                               padding=2, bias=False)  # stride = 1, dilation = 2
-        self.bn2 = nn.BatchNorm2d(planes)
-        self.conv3 = nn.Conv2d(planes, planes * 4, kernel_size=1, bias=False)
-        self.bn3 = nn.BatchNorm2d(planes * 4)
-        self.relu = nn.ReLU(inplace=True)
-        self.downsample = downsample
-        self.stride = stride
+        
         self.extra_conv = nn.Sequential(
             nn.Conv2d(inplanes, planes * 4, kernel_size=1, bias=False),
             nn.BatchNorm2d(planes * 4)
         )
+        super(BottleneckB, self).__init__(inplanes, planes, stride, downsample)
 
     def forward(self, x):
         out = self.conv1(x)
@@ -100,7 +66,7 @@ class BottleneckB(nn.Module):
         return out
 
 
-class DetNet(nn.Module):
+class DetNet(ResNet):
 
     def __init__(self, block, layers, num_classes=1000):
         self.inplanes = 64
@@ -125,23 +91,6 @@ class DetNet(nn.Module):
             elif isinstance(m, nn.BatchNorm2d):
                 m.weight.data.fill_(1)
                 m.bias.data.zero_()
-
-    def _make_layer(self, block, planes, blocks, stride=1):
-        downsample = None
-        if stride != 1 or self.inplanes != planes * block.expansion:
-            downsample = nn.Sequential(
-                nn.Conv2d(self.inplanes, planes * block.expansion,
-                          kernel_size=1, stride=stride, bias=False),
-                nn.BatchNorm2d(planes * block.expansion),
-            )
-
-        layers = []
-        layers.append(block(self.inplanes, planes, stride, downsample))
-        self.inplanes = planes * block.expansion
-        for i in range(1, blocks):
-            layers.append(block(self.inplanes, planes))
-
-        return nn.Sequential(*layers)
 
     def _make_new_layer(self, planes, blocks):
         downsample = None

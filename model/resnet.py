@@ -1,17 +1,16 @@
-from __future__ import absolute_import
-from __future__ import division
-from __future__ import print_function
+from __future__ import absolute_import, division, print_function
 
-from model.utils.config import cfg
-from model.fpn.fpn import _FPN
+import math
+import pdb
 
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
-from torch.autograd import Variable
-import math
 import torch.utils.model_zoo as model_zoo
-import pdb
+from torch.autograd import Variable
+
+from model.fpn.fpn import _FPN
+from model.utils.config import cfg
 
 __all__ = ['ResNet', 'resnet18', 'resnet34', 'resnet50', 'resnet101',
        'resnet152']

@@ -1,13 +1,16 @@
 from __future__ import division
-import torch
-from torchvision import transforms
+
+import math
+import pdb
+import random as random_random
+import types
+
 import cv2
 import numpy as np
-import types
+import torch
 from numpy import random
-import random as random_random
-import pdb
-import math
+from torchvision import transforms
+
 from data.config import widerface_640
 
 cfg = widerface_640

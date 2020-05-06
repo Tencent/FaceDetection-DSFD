@@ -1,14 +1,18 @@
-from __future__ import division , print_function
+from __future__ import division, print_function
+
+import os
+import pdb
+
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
-from torch.autograd import Variable
-from layers import *
-from data import  widerface_640
-import os
-import pdb
-from model.detnet_backbone import *
 import torchvision
+from torch.autograd import Variable
+
+from data import widerface_640
+from layers import *
+from model.detnet_backbone import *
+
 #import pretrainedmodels
 
 cfg = widerface_640
@@ -242,9 +246,9 @@ class SSD(nn.Module):
             arm_loc = list()
             arm_conf = list()
             arm_sources = [conv3_3_x, conv4_3_x, conv5_3_x, fc7_x, conv6_2_x, conv7_2_x]
-            for (x, l, c) in zip(arm_sources, self.arm_loc, self.arm_conf):
-                arm_loc.append( l(x).permute(0, 2, 3, 1).contiguous() )    
-                arm_conf.append( c(x).permute(0, 2, 3, 1).contiguous() )
+            for (feat, l, c) in zip(arm_sources, self.arm_loc, self.arm_conf):
+                arm_loc.append( l(feat).permute(0, 2, 3, 1).contiguous() )    
+                arm_conf.append( c(feat).permute(0, 2, 3, 1).contiguous() )
             arm_loc = torch.cat([o.view(o.size(0), -1) for o in arm_loc], 1)
             arm_conf = torch.cat([o.view(o.size(0), -1) for o in arm_conf], 1)
               
@@ -289,23 +293,23 @@ class SSD(nn.Module):
         
         # apply multibox head to source layers
         featuremap_size = []
-        for  (x, l, c) in zip(sources, self.loc, self.conf):
-            featuremap_size.append([ x.shape[2], x.shape[3]])
-            loc.append(l(x).permute(0, 2, 3, 1).contiguous())
+        for  (feat, l, c) in zip(sources, self.loc, self.conf):
+            featuremap_size.append([ feat.shape[2], feat.shape[3]])
+            loc.append(l(feat).permute(0, 2, 3, 1).contiguous())
             if mo:
                 if len(conf)==0:
-                    chunk = torch.chunk(c(x) , 4 , 1)
+                    chunk = torch.chunk(c(feat) , 4 , 1)
                     bmax  = torch.max(torch.max(chunk[0], chunk[1]) , chunk[2])
                     cls1  = torch.cat([bmax,chunk[3]], dim=1)
                     conf.append( cls1.permute(0, 2, 3, 1).contiguous() )
                 else:
-                    conf.append(c(x).permute(0, 2, 3, 1).contiguous())
+                    conf.append(c(feat).permute(0, 2, 3, 1).contiguous())
             elif mio:
                 len_conf = len(conf)
                 if cfg['mbox'][0] ==1 :
-                    cls = self.mio_module(c(x),len_conf)
+                    cls = self.mio_module(c(feat),len_conf)
                 else:
-                    mmbox = torch.chunk(c(x) , cfg['mbox'][0] , 1)
+                    mmbox = torch.chunk(c(feat) , cfg['mbox'][0] , 1)
                     cls_0 = self.mio_module(mmbox[0], len_conf)
                     cls_1 = self.mio_module(mmbox[1], len_conf)
                     cls_2 = self.mio_module(mmbox[2], len_conf)
@@ -313,7 +317,7 @@ class SSD(nn.Module):
                     cls = torch.cat([cls_0, cls_1, cls_2, cls_3] , dim=1)
                 conf.append(cls.permute(0, 2, 3, 1).contiguous())
             else:
-                conf.append(c(x).permute(0, 2, 3, 1).contiguous())
+                conf.append(c(feat).permute(0, 2, 3, 1).contiguous())
         if pa:
             mbox_num = cfg['mbox'][0]
             face_loc = torch.cat(  [o[:,:,:,:4*mbox_num].contiguous().view(o.size(0),-1) for o in loc],1)

@@ -1,22 +1,25 @@
+import pdb
 import random
+import time
+
+import numpy as np
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
+import torchvision.models as models
+import torchvision.utils as vutils
 from torch.autograd import Variable, gradcheck
 from torch.autograd.gradcheck import gradgradcheck
-import torchvision.models as models
-from torch.autograd import Variable
-import numpy as np
-import torchvision.utils as vutils
-from model.utils.config import cfg    # rm 'lib.', or cfg will create a new copy
-from model.rpn.rpn_fpn import _RPN_FPN
-from model.roi_pooling.modules.roi_pool import _RoIPooling
-from model.roi_crop.modules.roi_crop import _RoICrop
+
 from model.roi_align.modules.roi_align import RoIAlignAvg
+from model.roi_crop.modules.roi_crop import _RoICrop
+from model.roi_pooling.modules.roi_pool import _RoIPooling
 from model.rpn.proposal_target_layer import _ProposalTargetLayer
-from model.utils.net_utils import _smooth_l1_loss, _crop_pool_layer, _affine_grid_gen, _affine_theta
-import time
-import pdb
+from model.rpn.rpn_fpn import _RPN_FPN
+from model.utils.config import cfg  # rm 'lib.', or cfg will create a new copy
+from model.utils.net_utils import (_affine_grid_gen, _affine_theta,
+                                   _crop_pool_layer, _smooth_l1_loss)
+
 
 class _FPN(nn.Module):
     """ FPN """
