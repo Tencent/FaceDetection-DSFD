@@ -1,8 +1,5 @@
-## [DSFD: Dual Shot Face Detector](https://arxiv.org/abs/1810.10220)
 
-[![License](https://img.shields.io/badge/license-BSD-blue.svg)](LICENSE)
-
-By [Jian Li](https://lijiannuist.github.io/), [Yabiao Wang](https://github.com/ChaunceyWang), [Changan Wang](https://github.com/HiKapok), [Ying Tai](https://tyshiwo.github.io/), Jianjun Qian, Jian Yang, Chengjie Wang, Jilin Li, Feiyue Huang.
+<img src="imgs/DSFD_logo.PNG" title="Logo" width="300" /> 
 
 ## Update
 
@@ -113,4 +110,9 @@ If you find DSFD useful in your research, please consider citing:
   booktitle={Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition},
   year={2019}
 }
+```
+## Contact
+For any question, please file an issue or contact
+```
+Jian Li: swordli@tencent.com
 ```
