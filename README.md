@@ -13,7 +13,7 @@
   <img src='./imgs/dsfd_video.gif' width=1000'/>
 </p>
 
-In this paper, we propose a novel face detection network, named DSFD, with superior performance over the state-of-the-art face detectors. You can use the code to evaluate our DSFD for face detection. 
+In this repo, we propose a novel face detection network, named DSFD, with superior performance over the state-of-the-art face detectors. You can use the code to evaluate our DSFD for face detection. 
 
 For more details, please refer to our paper [DSFD: Dual Shot Face Detector](https://arxiv.org/abs/1810.10220)! or poster [slide](./imgs/DSFD_CVPR2019_poster.pdf)!
 
