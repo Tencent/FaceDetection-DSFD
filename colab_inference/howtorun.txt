@@ -1,0 +1,40 @@
+# Already inside notebook just run code
+###################################################################################
+## Install these versions
+
+!pip install Torch==0.3.1
+!pip install Torchvision==0.2.1
+
+## Clone repo
+
+!git clone https://github.com/TencentYoutuResearch/FaceDetection-DSFD.git
+
+## Mount drive
+
+change directory to: /content/FaceDetection-DSFD
+
+###################################################################################
+
+# Do these manually (path to weight file and path to images you want to test and save
+## change paths
+
+change path of trained_model in code cell
+change path of save folder,etc 
+
+!it look like this 
+
+widerface_root="WIDERFace_ROOT"
+trained_model = "/content/drive/My Drive/WIDERFace_DSFD_RES152.pth"
+save_folder = "eval_tools/"
+visual_threshold = 0.1
+cuda = True
+img_root="./data/worlds-largest-selfie.jpg"
+
+
+change path to your images in next code
+
+!it look like this 
+
+filesdir='/content/drive/My Drive/FolderSeconds/'
+
+
