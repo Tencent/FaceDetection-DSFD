@@ -4,7 +4,7 @@
 start=`date +%s`
 
 # handle optional download dir
-if [ -z '$1' ]
+if [ -z "$1" ]
   then
     # navigate to ~/data
     echo 'navigating to ~/data/ ...' 
